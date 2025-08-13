@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 
 export default function Navbar(){
+  const { user } = useAuth()
+
   return (
     <nav className="bg-white shadow">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -15,7 +18,16 @@ export default function Navbar(){
         </div>
         <div className="flex items-center gap-4">
           <input placeholder="Search" className="border rounded px-2 py-1 hidden sm:block" />
-          <Link to="/admin" className="text-sm bg-gray-800 text-white px-3 py-1 rounded">Admin</Link>
+          <Link 
+            to="/admin" 
+            className={`text-sm px-3 py-1 rounded ${
+              user 
+                ? 'bg-green-600 text-white hover:bg-green-700' 
+                : 'bg-gray-800 text-white hover:bg-gray-700'
+            }`}
+          >
+            {user ? 'Dashboard' : 'Admin'}
+          </Link>
         </div>
       </div>
     </nav>
