@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
-import { databases, DATABASE_ID, COLLECTIONS } from '../appwrite/config'
+import { databases, DATABASE_ID, COLLECTIONS, QueryTool } from '../appwrite/config'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
@@ -23,9 +23,15 @@ export default function CategoryPage(){
       setLoading(true)
       setError('')
       try{
-        const res = await databases.listDocuments(DATABASE_ID, COLLECTIONS.products)
+        // Fetch all products first, then filter by category
+        const res = await databases.listDocuments(
+          DATABASE_ID, 
+          COLLECTIONS.products,
+          [QueryTool.equal('category', id)]
+        )
         const filtered = res.documents ? res.documents.filter(p => p.category === id) : []
         setProducts(filtered)
+        console.log(`Products loaded for category ${id}:`, filtered.length)
       }catch(err){
         console.error('Category load error', err)
         setError('Failed to load products for this category')

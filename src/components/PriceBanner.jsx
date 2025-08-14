@@ -8,15 +8,26 @@ export default function PriceBanner(){
     // fetch banner doc from Appwrite database
     async function fetchBanner(){
       try{
-        const resp = await databases.listDocuments(DATABASE_ID, COLLECTIONS.banner)
+        const resp = await databases.listDocuments(
+          DATABASE_ID, 
+          COLLECTIONS.banner,
+          [], // No queries needed for banner
+          100 // Limit
+        )
         if(resp.total > 0){
           setText(resp.documents[0].text || text)
+          console.log('Banner loaded:', resp.documents[0].text)
         }
       }catch(err){
-        console.warn('Banner fetch error', err)
+        console.error('Banner fetch error', err)
+        // Keep default text if fetch fails
       }
     }
     fetchBanner()
+    
+    // Refresh banner every 5 minutes
+    const interval = setInterval(fetchBanner, 300000)
+    return () => clearInterval(interval)
   },[])
 
   return (

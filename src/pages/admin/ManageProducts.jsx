@@ -21,8 +21,14 @@ export default function ManageProducts(){
   async function load(){
     try{
       setError('')
-      const res = await databases.listDocuments(DATABASE_ID, COLLECTIONS.products)
+      const res = await databases.listDocuments(
+        DATABASE_ID, 
+        COLLECTIONS.products,
+        [], // No filters - get all products
+        100 // Limit to 100 products
+      )
       setList(res.documents || [])
+      console.log('Admin: Products loaded:', res.documents?.length || 0)
     }catch(err){ 
       console.error('Load products error:', err)
       setError('Failed to load products: ' + (err.message || err))
@@ -51,10 +57,13 @@ export default function ManageProducts(){
         price: parseFloat(form.price),
         category: form.category,
         featured: form.featured,
-        imageUrl: imageUrl
+        imageUrl: imageUrl,
+        createdAt: new Date().toISOString()
       }
       
+      console.log('Creating product with data:', productData)
       const doc = await databases.createDocument(DATABASE_ID, COLLECTIONS.products, ID_TOOL.unique(), productData)
+      console.log('Product created successfully:', doc)
       setList(prev=>[...prev, doc])
       setForm({name:'', price:'', category:'bracelet', featured:false})
       setFile(null)

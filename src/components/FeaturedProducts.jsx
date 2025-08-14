@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { databases, DATABASE_ID, COLLECTIONS } from '../appwrite/config'
+import { databases, DATABASE_ID, COLLECTIONS, QueryTool } from '../appwrite/config'
 
 export default function FeaturedProducts(){
   const [products, setProducts] = useState([])
@@ -11,9 +11,15 @@ export default function FeaturedProducts(){
       setLoading(true)
       setError('')
       try{
-        const res = await databases.listDocuments(DATABASE_ID, COLLECTIONS.products)
+        // Fetch with explicit query to get featured products
+        const res = await databases.listDocuments(
+          DATABASE_ID, 
+          COLLECTIONS.products,
+          [QueryTool.equal('featured', true)]
+        )
         const featured = res.documents ? res.documents.filter(d=>d.featured) : []
         setProducts(featured)
+        console.log('Featured products loaded:', featured.length)
       }catch(err){
         console.error('Featured products load error', err)
         setError('Failed to load featured products')
@@ -23,6 +29,15 @@ export default function FeaturedProducts(){
     }
     load()
   },[])
+
+  // Add a refresh function that can be called
+  useEffect(() => {
+    const interval = setInterval(() => {
+      load()
+    }, 30000) // Refresh every 30 seconds
+    
+    return () => clearInterval(interval)
+  }, [])
 
   if (loading) {
     return (

@@ -19,8 +19,10 @@ export function AuthProvider({ children }) {
     try {
       const session = await account.get()
       setUser(session)
+      console.log('User authenticated:', session.email)
     } catch (error) {
       setUser(null)
+      console.log('No active session')
     } finally {
       setLoading(false)
     }
@@ -31,8 +33,10 @@ export function AuthProvider({ children }) {
       await account.createEmailPasswordSession(email, password)
       const session = await account.get()
       setUser(session)
+      console.log('Login successful:', session.email)
       return { success: true }
     } catch (error) {
+      console.error('Login error:', error)
       return { success: false, error: error.message }
     }
   }
@@ -41,8 +45,10 @@ export function AuthProvider({ children }) {
     try {
       await account.deleteSession('current')
       setUser(null)
+      console.log('Logout successful')
       return { success: true }
     } catch (error) {
+      console.error('Logout error:', error)
       return { success: false, error: error.message }
     }
   }

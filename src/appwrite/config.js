@@ -1,8 +1,16 @@
 import { Client, Databases, Storage, Account, ID, Query } from 'appwrite'
 
 const client = new Client()
-  .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT || 'http://localhost/v1')
+  .setEndpoint(import.meta.env.VITE_APPWRITE_ENDPOINT || 'https://cloud.appwrite.io/v1')
   .setProject(import.meta.env.VITE_APPWRITE_PROJECT || 'YOUR_PROJECT_ID')
+
+// Log configuration for debugging
+console.log('Appwrite Config:', {
+  endpoint: import.meta.env.VITE_APPWRITE_ENDPOINT,
+  project: import.meta.env.VITE_APPWRITE_PROJECT,
+  database: import.meta.env.VITE_APPWRITE_DATABASE,
+  bucket: import.meta.env.VITE_APPWRITE_BUCKET
+})
 
 export const account = new Account(client)
 export const databases = new Databases(client)
