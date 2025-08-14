@@ -1,76 +1,261 @@
 import React, {useState, useEffect} from 'react'
 import { databases, storage, ID_TOOL, DATABASE_ID, BUCKET_ID, COLLECTIONS } from '../../appwrite/config'
 
+const CATEGORIES = [
+  { id: 'bracelet', name: 'Bracelet' },
+  { id: 'necklace', name: 'Necklace' },
+  { id: 'earring', name: 'Earring' },
+  { id: 'nosepin', name: 'Nose Pin' },
+  { id: 'waistband', name: 'Waistband' }
+]
+
 export default function ManageProducts(){
   const [list, setList] = useState([])
   const [form, setForm] = useState({name:'', price:'', category:'bracelet', featured:false})
   const [file, setFile] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   useEffect(()=>{ load() },[])
 
   async function load(){
     try{
+      setError('')
       const res = await databases.listDocuments(DATABASE_ID, COLLECTIONS.products)
       setList(res.documents || [])
-    }catch(err){ console.warn(err) }
+    }catch(err){ 
+      console.error('Load products error:', err)
+      setError('Failed to load products: ' + (err.message || err))
+    }
   }
 
   async function create(){
+    if (!form.name || !form.price) {
+      setError('Name and price are required')
+      return
+    }
+
+    setLoading(true)
+    setError('')
+    
     try{
-      let fileUrl = ''
+      let imageUrl = ''
       if(file){
         const uploaded = await storage.createFile(BUCKET_ID, ID_TOOL.unique(), file)
         // Construct a public view URL for the uploaded file
-        fileUrl = `${import.meta.env.VITE_APPWRITE_ENDPOINT || 'http://localhost/v1'}/storage/buckets/${BUCKET_ID}/files/${uploaded.$id}/view?project=${import.meta.env.VITE_APPWRITE_PROJECT || 'YOUR_PROJECT_ID'}`
+        imageUrl = `${import.meta.env.VITE_APPWRITE_ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${uploaded.$id}/view?project=${import.meta.env.VITE_APPWRITE_PROJECT}`
       }
-      const doc = await databases.createDocument(DATABASE_ID, COLLECTIONS.products, ID_TOOL.unique(), { ...form, imageUrl: fileUrl })
+      
+      const productData = {
+        name: form.name,
+        price: parseFloat(form.price),
+        category: form.category,
+        featured: form.featured,
+        imageUrl: imageUrl
+      }
+      
+      const doc = await databases.createDocument(DATABASE_ID, COLLECTIONS.products, ID_TOOL.unique(), productData)
       setList(prev=>[...prev, doc])
       setForm({name:'', price:'', category:'bracelet', featured:false})
       setFile(null)
-      alert('Created')
-    }catch(err){ alert(err.message || err) }
+      
+      // Reset file input
+      const fileInput = document.querySelector('input[type="file"]')
+      if (fileInput) fileInput.value = ''
+      
+      alert('Product created successfully!')
+    }catch(err){ 
+      console.error('Create product error:', err)
+      setError('Failed to create product: ' + (err.message || err))
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  async function toggleFeatured(id, currentFeatured) {
+    try {
+      setError('')
+      await databases.updateDocument(DATABASE_ID, COLLECTIONS.products, id, { 
+        featured: !currentFeatured 
+      })
+      
+      // Update local state
+      setList(prev => prev.map(p => 
+        p.$id === id ? { ...p, featured: !currentFeatured } : p
+      ))
+      
+      alert('Product updated successfully!')
+    } catch (err) {
+      console.error('Toggle featured error:', err)
+      setError('Failed to update product: ' + (err.message || err))
+    }
   }
 
   async function remove(id){
-    if(!confirm('Delete?')) return
-    try{ await databases.deleteDocument(DATABASE_ID, COLLECTIONS.products, id); load() }catch(err){alert(err.message || err)}
+    if(!confirm('Are you sure you want to delete this product?')) return
+    
+    try{ 
+      setError('')
+      await databases.deleteDocument(DATABASE_ID, COLLECTIONS.products, id)
+      setList(prev => prev.filter(p => p.$id !== id))
+      alert('Product deleted successfully!')
+    }catch(err){
+      console.error('Delete product error:', err)
+      setError('Failed to delete product: ' + (err.message || err))
+    }
   }
 
   return (
     <div>
-      <h3 className="text-xl font-semibold mb-4">Products</h3>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="md:col-span-2">
-          <div className="border p-4 rounded">
-            <input placeholder="Name" value={form.name} onChange={e=>setForm({...form,name:e.target.value})} className="w-full border p-2 mb-2" />
-            <input placeholder="Price" value={form.price} onChange={e=>setForm({...form,price:e.target.value})} className="w-full border p-2 mb-2" />
-            <select value={form.category} onChange={e=>setForm({...form,category:e.target.value})} className="w-full border p-2 mb-2">
-              <option value="bracelet">Bracelet</option>
-              <option value="necklace">Necklace</option>
-            </select>
-            <label className="inline-flex items-center gap-2 mb-2"><input type="checkbox" checked={form.featured} onChange={e=>setForm({...form,featured:e.target.checked})}/> Featured</label>
-            <input type="file" onChange={e=>setFile(e.target.files[0])} className="mb-3" />
+      <h3 className="text-xl font-semibold mb-4">Manage Products</h3>
+      
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-4">
+          {error}
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Create Product Form */}
+        <div className="bg-gray-50 p-6 rounded-lg">
+          <h4 className="text-lg font-semibold mb-4">Add New Product</h4>
+          
+          <div className="space-y-4">
             <div>
-              <button onClick={create} className="bg-green-600 text-white px-4 py-2 rounded">Create</button>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Product Name</label>
+              <input 
+                placeholder="Enter product name" 
+                value={form.name} 
+                onChange={e=>setForm({...form,name:e.target.value})} 
+                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              />
             </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Price (₹)</label>
+              <input 
+                type="number"
+                placeholder="Enter price" 
+                value={form.price} 
+                onChange={e=>setForm({...form,price:e.target.value})} 
+                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              />
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+              <select 
+                value={form.category} 
+                onChange={e=>setForm({...form,category:e.target.value})} 
+                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                {CATEGORIES.map(cat => (
+                  <option key={cat.id} value={cat.id}>{cat.name}</option>
+                ))}
+              </select>
+            </div>
+            
+            <div>
+              <label className="inline-flex items-center gap-2">
+                <input 
+                  type="checkbox" 
+                  checked={form.featured} 
+                  onChange={e=>setForm({...form,featured:e.target.checked})}
+                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                />
+                <span className="text-sm font-medium text-gray-700">Featured Product</span>
+              </label>
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Product Image</label>
+              <input 
+                type="file" 
+                accept="image/*"
+                onChange={e=>setFile(e.target.files[0])} 
+                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+              />
+            </div>
+            
+            <button 
+              onClick={create} 
+              disabled={loading}
+              className="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? 'Creating...' : 'Create Product'}
+            </button>
           </div>
-          <div className="mt-6">
-            <h4 className="font-semibold mb-2">Existing</h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {list.map(p=> (
-                <div className="border p-3 rounded" key={p.$id}>
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <div className="font-semibold">{p.name}</div>
-                      <div className="text-sm text-gray-600">₹{p.price}</div>
+        </div>
+
+        {/* Products List */}
+        <div>
+          <div className="flex justify-between items-center mb-4">
+            <h4 className="text-lg font-semibold">All Products ({list.length})</h4>
+            <button 
+              onClick={load}
+              className="text-blue-600 hover:text-blue-800 text-sm"
+            >
+              Refresh
+            </button>
+          </div>
+          
+          <div className="space-y-3 max-h-96 overflow-y-auto">
+            {list.length === 0 ? (
+              <div className="text-center py-8 text-gray-500">
+                No products found. Create your first product!
+              </div>
+            ) : (
+              list.map(product => (
+                <div key={product.$id} className="border border-gray-200 rounded-lg p-4 bg-white">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <h5 className="font-semibold text-gray-900">{product.name}</h5>
+                        {product.featured && (
+                          <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">
+                            Featured
+                          </span>
+                        )}
+                      </div>
+                      
+                      <div className="text-sm text-gray-600 space-y-1">
+                        <div>Price: ₹{product.price}</div>
+                        <div>Category: {CATEGORIES.find(c => c.id === product.category)?.name || product.category}</div>
+                        {product.imageUrl && (
+                          <div>
+                            <img 
+                              src={product.imageUrl} 
+                              alt={product.name}
+                              className="w-16 h-16 object-cover rounded mt-2"
+                            />
+                          </div>
+                        )}
+                      </div>
                     </div>
-                    <div className="flex gap-2">
-                      <button onClick={()=>remove(p.$id)} className="text-red-600">Delete</button>
+                    
+                    <div className="flex flex-col gap-2 ml-4">
+                      <button
+                        onClick={() => toggleFeatured(product.$id, product.featured)}
+                        className={`text-xs px-3 py-1 rounded ${
+                          product.featured 
+                            ? 'bg-yellow-600 text-white hover:bg-yellow-700' 
+                            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        }`}
+                      >
+                        {product.featured ? 'Remove Featured' : 'Make Featured'}
+                      </button>
+                      
+                      <button 
+                        onClick={() => remove(product.$id)} 
+                        className="text-xs px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"
+                      >
+                        Delete
+                      </button>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
+              ))
+            )}
           </div>
         </div>
       </div>
