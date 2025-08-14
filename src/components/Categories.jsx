@@ -11,13 +11,25 @@ const categories = [
 
 export default function Categories(){
   return (
-    <div id="categories" className="container mx-auto px-4 py-8">
-      <h2 className="text-2xl font-semibold mb-4">Shop by Category</h2>
+    <div id="categories" className="container mx-auto px-4 py-12 bg-cream-50">
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-bold text-brown-800 mb-2 font-serif">Shop by Category</h2>
+        <p className="text-brown-600">Discover our curated collection of fine jewelry</p>
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
         {categories.map(c=> (
-          <Link key={c.id} to={`/category/${c.id}`} className="rounded shadow hover:shadow-lg overflow-hidden block">
-            <img src={c.img} alt={c.name} className="w-full h-32 object-cover" />
-            <div className="p-3 text-center font-medium">{c.name}</div>
+          <Link 
+            key={c.id} 
+            to={`/category/${c.id}`} 
+            className="rounded-xl elegant-shadow hover:elegant-shadow-lg overflow-hidden block bg-white transform hover:scale-105 transition-all duration-300"
+          >
+            <div className="relative">
+              <img src={c.img} alt={c.name} className="w-full h-32 object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brown-900/20 to-transparent"></div>
+            </div>
+            <div className="p-4 text-center">
+              <div className="font-semibold text-brown-800 text-lg">{c.name}</div>
+            </div>
           </Link>
         ))}
       </div>

@@ -116,7 +116,7 @@ export default function ManageProducts(){
 
   return (
     <div>
-      <h3 className="text-xl font-semibold mb-4">Manage Products</h3>
+      <h3 className="text-2xl font-bold text-brown-800 mb-6 font-serif">Manage Products</h3>
       
       {error && (
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-4">
@@ -126,37 +126,37 @@ export default function ManageProducts(){
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Create Product Form */}
-        <div className="bg-gray-50 p-6 rounded-lg">
-          <h4 className="text-lg font-semibold mb-4">Add New Product</h4>
+        <div className="bg-cream-50 p-6 rounded-xl border border-cream-200">
+          <h4 className="text-lg font-semibold mb-4 text-brown-800">Add New Product</h4>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Product Name</label>
+              <label className="block text-sm font-medium text-brown-700 mb-1">Product Name</label>
               <input 
                 placeholder="Enter product name" 
                 value={form.name} 
                 onChange={e=>setForm({...form,name:e.target.value})} 
-                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                className="w-full border border-cream-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brown-500 bg-white" 
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Price (₹)</label>
+              <label className="block text-sm font-medium text-brown-700 mb-1">Price (₹)</label>
               <input 
                 type="number"
                 placeholder="Enter price" 
                 value={form.price} 
                 onChange={e=>setForm({...form,price:e.target.value})} 
-                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                className="w-full border border-cream-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brown-500 bg-white" 
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+              <label className="block text-sm font-medium text-brown-700 mb-1">Category</label>
               <select 
                 value={form.category} 
                 onChange={e=>setForm({...form,category:e.target.value})} 
-                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full border border-cream-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brown-500 bg-white"
               >
                 {CATEGORIES.map(cat => (
                   <option key={cat.id} value={cat.id}>{cat.name}</option>
@@ -170,26 +170,26 @@ export default function ManageProducts(){
                   type="checkbox" 
                   checked={form.featured} 
                   onChange={e=>setForm({...form,featured:e.target.checked})}
-                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  className="rounded border-cream-300 text-brown-600 focus:ring-brown-500"
                 />
-                <span className="text-sm font-medium text-gray-700">Featured Product</span>
+                <span className="text-sm font-medium text-brown-700">Featured Product</span>
               </label>
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Product Image</label>
+              <label className="block text-sm font-medium text-brown-700 mb-1">Product Image</label>
               <input 
                 type="file" 
                 accept="image/*"
                 onChange={e=>setFile(e.target.files[0])} 
-                className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                className="w-full border border-cream-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brown-500 bg-white" 
               />
             </div>
             
             <button 
               onClick={create} 
               disabled={loading}
-              className="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-brown-600 text-cream-50 px-4 py-3 rounded-lg hover:bg-brown-700 focus:outline-none focus:ring-2 focus:ring-brown-500 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-colors"
             >
               {loading ? 'Creating...' : 'Create Product'}
             </button>
@@ -199,10 +199,10 @@ export default function ManageProducts(){
         {/* Products List */}
         <div>
           <div className="flex justify-between items-center mb-4">
-            <h4 className="text-lg font-semibold">All Products ({list.length})</h4>
+            <h4 className="text-lg font-semibold text-brown-800">All Products ({list.length})</h4>
             <button 
               onClick={load}
-              className="text-blue-600 hover:text-blue-800 text-sm"
+              className="text-brown-600 hover:text-brown-800 text-sm font-medium"
             >
               Refresh
             </button>
@@ -210,24 +210,24 @@ export default function ManageProducts(){
           
           <div className="space-y-3 max-h-96 overflow-y-auto">
             {list.length === 0 ? (
-              <div className="text-center py-8 text-gray-500">
+              <div className="text-center py-8 text-brown-600 bg-cream-50 rounded-lg">
                 No products found. Create your first product!
               </div>
             ) : (
               list.map(product => (
-                <div key={product.$id} className="border border-gray-200 rounded-lg p-4 bg-white">
+                <div key={product.$id} className="border border-cream-200 rounded-lg p-4 bg-white elegant-shadow">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <h5 className="font-semibold text-gray-900">{product.name}</h5>
+                        <h5 className="font-semibold text-brown-800">{product.name}</h5>
                         {product.featured && (
-                          <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">
+                          <span className="bg-brown-100 text-brown-800 text-xs px-2 py-1 rounded-full">
                             Featured
                           </span>
                         )}
                       </div>
                       
-                      <div className="text-sm text-gray-600 space-y-1">
+                      <div className="text-sm text-brown-600 space-y-1">
                         <div>Price: ₹{product.price}</div>
                         <div>Category: {CATEGORIES.find(c => c.id === product.category)?.name || product.category}</div>
                         {product.imageUrl && (
@@ -235,7 +235,7 @@ export default function ManageProducts(){
                             <img 
                               src={product.imageUrl} 
                               alt={product.name}
-                              className="w-16 h-16 object-cover rounded mt-2"
+                              className="w-16 h-16 object-cover rounded-lg mt-2"
                             />
                           </div>
                         )}
@@ -247,8 +247,8 @@ export default function ManageProducts(){
                         onClick={() => toggleFeatured(product.$id, product.featured)}
                         className={`text-xs px-3 py-1 rounded ${
                           product.featured 
-                            ? 'bg-yellow-600 text-white hover:bg-yellow-700' 
-                            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                            ? 'bg-brown-600 text-cream-50 hover:bg-brown-700' 
+                            : 'bg-cream-200 text-brown-700 hover:bg-cream-300'
                         }`}
                       >
                         {product.featured ? 'Remove Featured' : 'Make Featured'}

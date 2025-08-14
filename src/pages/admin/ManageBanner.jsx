@@ -34,9 +34,25 @@ export default function ManageBanner(){
 
   return (
     <div>
-      <h3 className="text-xl font-semibold mb-4">Edit Banner Text</h3>
-      <textarea value={text} onChange={e=>setText(e.target.value)} className="w-full border p-2 mb-3" rows={3} />
-      <button onClick={save} className="bg-blue-600 text-white px-4 py-2 rounded">Save</button>
+      <h3 className="text-2xl font-bold text-brown-800 mb-6 font-serif">Edit Banner Text</h3>
+      <div className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium text-brown-700 mb-2">Banner Message</label>
+          <textarea 
+            value={text} 
+            onChange={e=>setText(e.target.value)} 
+            className="w-full border border-cream-300 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-brown-500 bg-white" 
+            rows={4}
+            placeholder="Enter your banner message..."
+          />
+        </div>
+        <button 
+          onClick={save} 
+          className="bg-brown-600 text-cream-50 px-6 py-3 rounded-lg hover:bg-brown-700 transition-colors font-medium"
+        >
+          Save Banner
+        </button>
+      </div>
     </div>
   )
 }

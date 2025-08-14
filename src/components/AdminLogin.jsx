@@ -22,11 +22,11 @@ export default function AdminLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
+    <div className="min-h-screen bg-cream-50 flex items-center justify-center">
+      <div className="max-w-md w-full bg-white rounded-xl elegant-shadow-lg p-8 border border-cream-200">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900">Admin Login</h2>
-          <p className="text-gray-600 mt-2">Sign in to access the admin dashboard</p>
+          <h2 className="text-3xl font-bold text-brown-800 font-serif">Admin Login</h2>
+          <p className="text-brown-600 mt-2">Sign in to access the admin dashboard</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -37,7 +37,7 @@ export default function AdminLogin() {
           )}
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="email" className="block text-sm font-medium text-brown-700 mb-2">
               Email Address
             </label>
             <input
@@ -46,13 +46,13 @@ export default function AdminLogin() {
               required
               value={credentials.email}
               onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-cream-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brown-500 focus:border-transparent"
               placeholder="admin@example.com"
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="password" className="block text-sm font-medium text-brown-700 mb-2">
               Password
             </label>
             <input
@@ -61,7 +61,7 @@ export default function AdminLogin() {
               required
               value={credentials.password}
               onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-cream-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brown-500 focus:border-transparent"
               placeholder="Enter your password"
             />
           </div>
@@ -69,13 +69,13 @@ export default function AdminLogin() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition duration-200"
+            className="w-full bg-brown-600 text-cream-50 py-3 px-4 rounded-lg hover:bg-brown-700 focus:outline-none focus:ring-2 focus:ring-brown-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition duration-200 font-medium"
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
 
-        <div className="mt-6 text-center text-sm text-gray-600">
+        <div className="mt-6 text-center text-sm text-brown-600">
           <p>Use your Appwrite admin credentials to access the dashboard</p>
         </div>
       </div>

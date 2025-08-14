@@ -47,21 +47,22 @@ export default function CategoryPage(){
   return (
     <div>
       <Navbar />
-      <div className="container mx-auto px-4 py-8">
+      <div className="min-h-screen bg-cream-50">
+        <div className="container mx-auto px-4 py-12">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">{categoryName}</h1>
-          <p className="text-gray-600">Discover our beautiful collection of {categoryName.toLowerCase()}</p>
+          <h1 className="text-4xl font-bold text-brown-800 mb-2 font-serif">{categoryName}</h1>
+          <p className="text-brown-600 text-lg">Discover our beautiful collection of {categoryName.toLowerCase()}</p>
         </div>
 
         {loading && (
           <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading products...</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brown-600 mx-auto"></div>
+            <p className="mt-4 text-brown-600">Loading products...</p>
           </div>
         )}
 
         {error && (
-          <div className="text-center py-12 text-red-600">
+          <div className="text-center py-12 text-red-700 bg-red-50 rounded-lg">
             {error}
           </div>
         )}
@@ -69,32 +70,35 @@ export default function CategoryPage(){
         {!loading && !error && (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {products.length === 0 ? (
-              <div className="col-span-full text-center py-12 text-gray-500">
+              <div className="col-span-full text-center py-12 text-brown-600 bg-white rounded-xl elegant-shadow">
                 <p className="text-lg">No products found in this category.</p>
                 <p className="text-sm mt-2">Check back later for new arrivals!</p>
               </div>
             ) : (
               products.map(p=> (
-                <div key={p.$id} className="border rounded-lg p-4 hover:shadow-lg transition-shadow">
+                <div key={p.$id} className="bg-white border border-cream-200 rounded-xl p-4 elegant-shadow hover:elegant-shadow-lg transition-all duration-300 transform hover:scale-105">
                   <div className="relative">
                     <img 
                       src={p.imageUrl || 'https://images.pexels.com/photos/1191531/pexels-photo-1191531.jpeg?auto=compress&cs=tinysrgb&w=400'} 
                       alt={p.name} 
-                      className="h-40 w-full object-cover mb-3 rounded" 
+                      className="h-48 w-full object-cover mb-4 rounded-lg" 
                     />
                     {p.featured && (
-                      <span className="absolute top-2 right-2 bg-yellow-500 text-white text-xs px-2 py-1 rounded-full">
+                      <span className="absolute top-3 right-3 bg-brown-600 text-cream-50 text-xs px-3 py-1 rounded-full font-medium">
                         Featured
                       </span>
                     )}
                   </div>
-                  <div className="font-semibold text-gray-900">{p.name}</div>
-                  <div className="text-lg font-bold text-blue-600">₹{p.price}</div>
+                  <div className="space-y-2">
+                    <div className="font-semibold text-brown-800 text-lg">{p.name}</div>
+                    <div className="text-xl font-bold text-brown-600">₹{p.price}</div>
+                  </div>
                 </div>
               ))
             )}
           </div>
         )}
+        </div>
       </div>
       <Footer />
     </div>

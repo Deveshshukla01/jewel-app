@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom color variables */
+:root {
+  --cream-50: #fefdf8;
+  --cream-100: #fdf8e8;
+  --cream-200: #faf0d0;
+  --cream-300: #f5e4a8;
+  --brown-600: #8b4513;
+  --brown-700: #6b3410;
+  --brown-800: #4a240b;
+  --brown-900: #2d1506;
+}
+
 /* Custom styles */
 .marquee {
   animation: marquee 20s linear infinite;
@@ -10,4 +22,22 @@
 @keyframes marquee {
   0% { transform: translateX(100%); }
   100% { transform: translateX(-100%); }
+}
+
+/* Custom gradient backgrounds */
+.cream-gradient {
+  background: linear-gradient(135deg, #fefdf8 0%, #fdf8e8 100%);
+}
+
+.brown-gradient {
+  background: linear-gradient(135deg, #8b4513 0%, #6b3410 100%);
+}
+
+/* Elegant shadows */
+.elegant-shadow {
+  box-shadow: 0 4px 20px rgba(139, 69, 19, 0.1);
+}
+
+.elegant-shadow-lg {
+  box-shadow: 0 10px 40px rgba(139, 69, 19, 0.15);
 }

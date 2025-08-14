@@ -31,9 +31,11 @@ export default function PriceBanner(){
   },[])
 
   return (
-    <div className="bg-yellow-50 border-t border-b py-2">
+    <div className="bg-gradient-to-r from-brown-600 to-brown-700 border-t border-b border-brown-500 py-3">
       <div className="container mx-auto px-4 marquee">
-        <div>{text} &nbsp; • &nbsp; Updated daily</div>
+        <div className="text-cream-100 font-medium text-center">
+          ✨ {text} &nbsp; • &nbsp; Updated daily &nbsp; • &nbsp; Free shipping on orders above ₹5000 ✨
+        </div>
       </div>
     </div>
   )
