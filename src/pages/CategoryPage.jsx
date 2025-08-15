@@ -5,11 +5,16 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
 const CATEGORY_NAMES = {
-  bracelet: 'Bracelets',
-  necklace: 'Necklaces', 
-  earring: 'Earrings',
-  nosepin: 'Nose Pins',
-  waistband: 'Waistbands'
+  'ladies-rings': 'Ladies Rings',
+  'gents-rings': 'Gents Rings',
+  'earings': 'Earings',
+  'bangles-karas': 'Bangles / Karas',
+  'chains': 'Chains',
+  'bracelets': 'Bracelets',
+  'mangalsutra': 'Mangalsutra',
+  'pendant-sets': 'Pendant Sets',
+  'diamonds': 'Diamonds',
+  'pendants': 'Pendants'
 }
 
 export default function CategoryPage(){
