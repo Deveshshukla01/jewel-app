@@ -5,14 +5,13 @@ export default function PriceBanner(){
   const [text, setText] = useState('Gold Price: ₹1000 | Silver Price: ₹650')
 
   useEffect(()=>{
-    // fetch banner doc from Appwrite database
     async function fetchBanner(){
       try{
         const resp = await databases.listDocuments(
           DATABASE_ID, 
           COLLECTIONS.banner,
-          [], // No queries needed for banner
-          100 // Limit
+          [],
+          100
         )
         if(resp.total > 0){
           setText(resp.documents[0].text || text)
@@ -20,21 +19,27 @@ export default function PriceBanner(){
         }
       }catch(err){
         console.error('Banner fetch error', err)
-        // Keep default text if fetch fails
       }
     }
     fetchBanner()
     
-    // Refresh banner every 5 minutes
     const interval = setInterval(fetchBanner, 300000)
     return () => clearInterval(interval)
   },[])
 
   return (
-    <div className="bg-gradient-to-r from-brown-600 to-brown-700 border-t border-b border-brown-500 py-3">
-      <div className="container mx-auto px-4 marquee">
-        <div className="text-cream-100 font-medium text-center">
-          ✨ {text} &nbsp; • &nbsp; Updated daily &nbsp; • &nbsp; Free shipping on orders above ₹5000 ✨
+    <div className="bg-gradient-to-r from-purple-600 via-purple-700 to-pink-600 py-3 overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="text-white font-medium text-center animate-pulse">
+          <div className="flex items-center justify-center space-x-4">
+            <span className="text-yellow-300">✨</span>
+            <span>{text}</span>
+            <span className="hidden sm:inline">•</span>
+            <span className="hidden sm:inline">Updated daily</span>
+            <span className="hidden md:inline">•</span>
+            <span className="hidden md:inline">Free shipping on orders above ₹5000</span>
+            <span className="text-yellow-300">✨</span>
+          </div>
         </div>
       </div>
     </div>

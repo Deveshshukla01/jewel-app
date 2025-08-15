@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { databases, DATABASE_ID, COLLECTIONS, QueryTool } from '../appwrite/config'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -28,7 +28,6 @@ export default function CategoryPage(){
       setLoading(true)
       setError('')
       try{
-        // Fetch all products first, then filter by category
         const res = await databases.listDocuments(
           DATABASE_ID, 
           COLLECTIONS.products,
@@ -50,60 +49,75 @@ export default function CategoryPage(){
   const categoryName = CATEGORY_NAMES[id] || id
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
-      <div className="min-h-screen bg-cream-50">
-        <div className="container mx-auto px-4 py-12">
-        <div className="mb-6">
-          <h1 className="text-4xl font-bold text-brown-800 mb-2 font-serif">{categoryName}</h1>
-          <p className="text-brown-600 text-lg">Discover our beautiful collection of {categoryName.toLowerCase()}</p>
+      
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-purple-600 to-pink-600 py-16">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 font-serif">{categoryName}</h1>
+          <p className="text-purple-100 text-lg md:text-xl max-w-2xl mx-auto">Discover our beautiful collection of {categoryName.toLowerCase()}</p>
         </div>
+      </div>
 
+      <div className="container mx-auto px-4 py-16">
         {loading && (
-          <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brown-600 mx-auto"></div>
-            <p className="mt-4 text-brown-600">Loading products...</p>
+          <div className="text-center py-16">
+            <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-200 border-t-purple-600 mx-auto"></div>
+            <p className="mt-6 text-gray-600 text-lg">Loading products...</p>
           </div>
         )}
 
         {error && (
-          <div className="text-center py-12 text-red-700 bg-red-50 rounded-lg">
-            {error}
+          <div className="text-center py-16 text-red-700 bg-red-50 rounded-2xl">
+            <div className="text-4xl mb-4">⚠️</div>
+            <p className="text-lg">{error}</p>
           </div>
         )}
 
         {!loading && !error && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {products.length === 0 ? (
-              <div className="col-span-full text-center py-12 text-brown-600 bg-white rounded-xl elegant-shadow">
-                <p className="text-lg">No products found in this category.</p>
-                <p className="text-sm mt-2">Check back later for new arrivals!</p>
+              <div className="col-span-full text-center py-16 text-gray-600 bg-white rounded-3xl shadow-lg">
+                <div className="text-6xl mb-4">💎</div>
+                <p className="text-xl mb-2">No products found in this category.</p>
+                <p className="text-sm">Check back later for new arrivals!</p>
               </div>
             ) : (
               products.map(p=> (
-                <div key={p.$id} className="bg-white border border-cream-200 rounded-xl p-4 elegant-shadow hover:elegant-shadow-lg transition-all duration-300 transform hover:scale-105">
-                  <div className="relative">
+                <Link 
+                  key={p.$id} 
+                  to={`/product/${p.$id}`}
+                  className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
+                >
+                  <div className="relative overflow-hidden">
                     <img 
                       src={p.imageUrl || 'https://images.pexels.com/photos/1191531/pexels-photo-1191531.jpeg?auto=compress&cs=tinysrgb&w=400'} 
                       alt={p.name} 
-                      className="h-48 w-full object-cover mb-4 rounded-lg" 
+                      className="h-64 w-full object-cover group-hover:scale-110 transition-transform duration-700" 
                     />
                     {p.featured && (
-                      <span className="absolute top-3 right-3 bg-brown-600 text-cream-50 text-xs px-3 py-1 rounded-full font-medium">
-                        Featured
-                      </span>
+                      <div className="absolute top-4 right-4">
+                        <span className="bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs px-3 py-2 rounded-full font-semibold shadow-lg">
+                          Featured
+                        </span>
+                      </div>
                     )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
-                  <div className="space-y-2">
-                    <div className="font-semibold text-brown-800 text-lg">{p.name}</div>
-                    <div className="text-xl font-bold text-brown-600">₹{p.price}</div>
+                  <div className="p-6">
+                    <h3 className="font-semibold text-gray-900 text-lg mb-2 group-hover:text-purple-600 transition-colors line-clamp-2">
+                      {p.name}
+                    </h3>
+                    <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                      ₹{p.price?.toLocaleString()}
+                    </div>
                   </div>
-                </div>
+                </Link>
               ))
             )}
           </div>
         )}
-        </div>
       </div>
       <Footer />
     </div>

@@ -5,6 +5,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Home from './pages/Home'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import CategoryPage from './pages/CategoryPage'
+import ProductDetail from './pages/ProductDetail'
 
 export default function App(){
   return (
@@ -13,6 +14,7 @@ export default function App(){
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/category/:id" element={<CategoryPage/>} />
+          <Route path="/product/:id" element={<ProductDetail/>} />
           <Route path="/admin/*" element={
             <ProtectedRoute>
               <AdminDashboard/>

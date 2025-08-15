@@ -1,8 +1,9 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Pagination } from 'swiper/modules'
+import { Autoplay, Pagination, EffectFade } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
+import 'swiper/css/effect-fade'
 
 const slides = [
   {
@@ -35,8 +36,9 @@ export default function HeroCarousel(){
         spaceBetween={0} 
         slidesPerView={1} 
         loop={true}
+        effect="fade"
         autoplay={{
-          delay: 4000,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -44,32 +46,32 @@ export default function HeroCarousel(){
           bulletClass: 'swiper-pagination-bullet hero-bullet',
           bulletActiveClass: 'swiper-pagination-bullet-active hero-bullet-active'
         }}
-        modules={[Autoplay, Pagination]}
+        modules={[Autoplay, Pagination, EffectFade]}
         className="hero-swiper"
       >
         {slides.map((slide, idx)=> (
           <SwiperSlide key={idx}>
-            <div className="relative h-[500px] md:h-[600px] overflow-hidden">
+            <div className="relative h-[70vh] md:h-[80vh] overflow-hidden">
               <img 
                 src={slide.image} 
                 alt={`slide-${idx}`} 
-                className="object-cover w-full h-full" 
+                className="object-cover w-full h-full scale-105" 
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-900/70 via-purple-800/50 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"></div>
               
               <div className="absolute inset-0 flex items-center">
                 <div className="container mx-auto px-4">
                   <div className="max-w-2xl text-white">
-                    <div className="text-sm font-medium tracking-wider text-cream-200 mb-2">
+                    <div className="text-sm font-semibold tracking-[0.2em] text-purple-300 mb-4 uppercase">
                       {slide.subtitle}
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-bold mb-4 font-serif leading-tight">
+                    <h1 className="text-5xl md:text-7xl font-bold mb-6 font-serif leading-tight">
                       {slide.title}
                     </h1>
-                    <p className="text-lg md:text-xl mb-8 text-cream-100 leading-relaxed">
+                    <p className="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed font-light">
                       {slide.description}
                     </p>
-                    <button className="bg-white text-purple-900 px-8 py-3 rounded-full font-semibold hover:bg-cream-100 transition-all duration-300 transform hover:scale-105 elegant-shadow-lg">
+                    <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 uppercase tracking-wide">
                       {slide.buttonText}
                     </button>
                   </div>
