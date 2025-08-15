@@ -63,10 +63,10 @@ export default function FeaturedProducts(){
   }
 
   return (
-    <div id="featured" className="container mx-auto px-4 py-12">
+    <div id="featured" className="container mx-auto px-4 py-16 bg-gradient-to-b from-cream-50 to-white">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-brown-800 mb-2 font-serif">Featured Products</h2>
-        <p className="text-brown-600">Handpicked treasures from our exclusive collection</p>
+        <h2 className="text-4xl font-bold text-brown-800 mb-4 font-serif">Featured Products</h2>
+        <p className="text-brown-600 text-lg max-w-2xl mx-auto">Handpicked treasures from our exclusive collection, each piece crafted with exceptional attention to detail</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.length === 0 && (
@@ -76,21 +76,21 @@ export default function FeaturedProducts(){
           </div>
         )}
         {products.map(p=> (
-          <div key={p.$id} className="bg-white border border-cream-200 rounded-xl p-4 elegant-shadow hover:elegant-shadow-lg transition-all duration-300 transform hover:scale-105">
+          <div key={p.$id} className="group bg-white border border-cream-200 rounded-2xl p-4 elegant-shadow hover:elegant-shadow-lg transition-all duration-300 transform hover:scale-105">
             <div className="relative">
               <img 
                 src={p.imageUrl || 'https://images.pexels.com/photos/1191531/pexels-photo-1191531.jpeg?auto=compress&cs=tinysrgb&w=400'} 
                 alt={p.name} 
-                className="h-48 w-full object-cover mb-4 rounded-lg" 
+                className="h-48 w-full object-cover mb-4 rounded-xl group-hover:scale-110 transition-transform duration-300" 
               />
-              <span className="absolute top-3 right-3 bg-brown-600 text-cream-50 text-xs px-3 py-1 rounded-full font-medium">
+              <span className="absolute top-3 right-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white text-xs px-3 py-1 rounded-full font-medium shadow-lg">
                 Featured
               </span>
             </div>
             <div className="space-y-2">
-              <div className="font-semibold text-brown-800 text-lg">{p.name}</div>
-              <div className="text-xl font-bold text-brown-600">₹{p.price}</div>
-              <div className="text-sm text-brown-500 capitalize bg-cream-100 px-2 py-1 rounded-full inline-block">
+              <div className="font-semibold text-brown-800 text-lg group-hover:text-brown-600 transition-colors">{p.name}</div>
+              <div className="text-xl font-bold text-purple-600">₹{p.price}</div>
+              <div className="text-sm text-brown-500 capitalize bg-gradient-to-r from-cream-100 to-cream-200 px-3 py-1 rounded-full inline-block">
                 {p.category}
               </div>
             </div>

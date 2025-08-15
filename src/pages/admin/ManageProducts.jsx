@@ -2,16 +2,21 @@ import React, {useState, useEffect} from 'react'
 import { databases, storage, ID_TOOL, DATABASE_ID, BUCKET_ID, COLLECTIONS } from '../../appwrite/config'
 
 const CATEGORIES = [
-  { id: 'bracelet', name: 'Bracelet' },
-  { id: 'necklace', name: 'Necklace' },
-  { id: 'earring', name: 'Earring' },
-  { id: 'nosepin', name: 'Nose Pin' },
-  { id: 'waistband', name: 'Waistband' }
+  { id: 'ladies-rings', name: 'Ladies Rings' },
+  { id: 'gents-rings', name: 'Gents Rings' },
+  { id: 'earings', name: 'Earings' },
+  { id: 'bangles-karas', name: 'Bangles / Karas' },
+  { id: 'chains', name: 'Chains' },
+  { id: 'bracelets', name: 'Bracelets' },
+  { id: 'mangalsutra', name: 'Mangalsutra' },
+  { id: 'pendant-sets', name: 'Pendant Sets' },
+  { id: 'diamonds', name: 'Diamonds' },
+  { id: 'pendants', name: 'Pendants' }
 ]
 
 export default function ManageProducts(){
   const [list, setList] = useState([])
-  const [form, setForm] = useState({name:'', price:'', category:'bracelet', featured:false})
+  const [form, setForm] = useState({name:'', price:'', category:'ladies-rings', featured:false})
   const [file, setFile] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -65,7 +70,7 @@ export default function ManageProducts(){
       const doc = await databases.createDocument(DATABASE_ID, COLLECTIONS.products, ID_TOOL.unique(), productData)
       console.log('Product created successfully:', doc)
       setList(prev=>[...prev, doc])
-      setForm({name:'', price:'', category:'bracelet', featured:false})
+      setForm({name:'', price:'', category:'ladies-rings', featured:false})
       setFile(null)
       
       // Reset file input
