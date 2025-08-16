@@ -34,21 +34,21 @@ export default function ManageBanner(){
 
   return (
     <div>
-      <h3 className="text-2xl font-bold text-gray-800 mb-6 font-serif">Edit Banner Text</h3>
+      <h3 className="text-2xl font-bold text-primary-800 mb-6 font-serif">Edit Banner Text</h3>
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">Banner Message</label>
+          <label className="block text-sm font-medium text-primary-700 mb-2">Banner Message</label>
           <textarea 
             value={text} 
             onChange={e=>setText(e.target.value)} 
-            className="w-full border border-gray-300 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white" 
+            className="w-full border border-secondary-300 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-secondary-500 bg-white hover:shadow-warm transition-all duration-300" 
             rows={4}
             placeholder="Enter your banner message..."
           />
         </div>
         <button 
           onClick={save} 
-          className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-200 font-medium"
+          className="bg-gradient-to-r from-primary-800 to-secondary-600 text-white px-6 py-3 rounded-lg hover:shadow-warm transition-all duration-300 font-medium transform hover:scale-105 glow"
         >
           Save Banner
         </button>

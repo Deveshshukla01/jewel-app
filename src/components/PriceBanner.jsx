@@ -28,17 +28,18 @@ export default function PriceBanner(){
   },[])
 
   return (
-    <div className="bg-gradient-to-r from-purple-600 via-purple-700 to-pink-600 py-3 overflow-hidden">
+    <div className="bg-gradient-to-r from-secondary-500 via-secondary-600 to-secondary-700 py-4 overflow-hidden relative">
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
       <div className="container mx-auto px-4">
-        <div className="text-white font-medium text-center animate-pulse">
+        <div className="text-primary-800 font-semibold text-center bounce-in">
           <div className="flex items-center justify-center space-x-4">
-            <span className="text-yellow-300">✨</span>
-            <span>{text}</span>
+            <span className="text-primary-800 text-lg animate-float">💎</span>
+            <span className="text-lg">{text}</span>
             <span className="hidden sm:inline">•</span>
             <span className="hidden sm:inline">Updated daily</span>
             <span className="hidden md:inline">•</span>
             <span className="hidden md:inline">Free shipping on orders above ₹5000</span>
-            <span className="text-yellow-300">✨</span>
+            <span className="text-primary-800 text-lg animate-float">💎</span>
           </div>
         </div>
       </div>

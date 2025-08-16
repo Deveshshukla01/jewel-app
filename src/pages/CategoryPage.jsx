@@ -53,18 +53,18 @@ export default function CategoryPage(){
       <Navbar />
       
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-purple-600 to-pink-600 py-16">
+      <div className="bg-gradient-to-r from-primary-800 to-secondary-600 py-16">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 font-serif">{categoryName}</h1>
-          <p className="text-purple-100 text-lg md:text-xl max-w-2xl mx-auto">Discover our beautiful collection of {categoryName.toLowerCase()}</p>
+          <p className="text-secondary-100 text-lg md:text-xl max-w-2xl mx-auto">Discover our beautiful collection of {categoryName.toLowerCase()}</p>
         </div>
       </div>
 
       <div className="container mx-auto px-4 py-16">
         {loading && (
           <div className="text-center py-16">
-            <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-200 border-t-purple-600 mx-auto"></div>
-            <p className="mt-6 text-gray-600 text-lg">Loading products...</p>
+            <div className="animate-spin rounded-full h-16 w-16 border-4 border-secondary-200 border-t-secondary-600 mx-auto"></div>
+            <p className="mt-6 text-primary-600 text-lg">Loading products...</p>
           </div>
         )}
 
@@ -78,7 +78,7 @@ export default function CategoryPage(){
         {!loading && !error && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {products.length === 0 ? (
-              <div className="col-span-full text-center py-16 text-gray-600 bg-white rounded-3xl shadow-lg">
+              <div className="col-span-full text-center py-16 text-primary-600 bg-white rounded-3xl shadow-warm">
                 <div className="text-6xl mb-4">💎</div>
                 <p className="text-xl mb-2">No products found in this category.</p>
                 <p className="text-sm">Check back later for new arrivals!</p>
@@ -88,7 +88,7 @@ export default function CategoryPage(){
                 <Link 
                   key={p.$id} 
                   to={`/product/${p.$id}`}
-                  className="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105"
+                  className="group bg-white rounded-3xl overflow-hidden shadow-warm hover:shadow-warm-lg card-hover stagger-item"
                 >
                   <div className="relative overflow-hidden">
                     <img 
@@ -98,7 +98,7 @@ export default function CategoryPage(){
                     />
                     {p.featured && (
                       <div className="absolute top-4 right-4">
-                        <span className="bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs px-3 py-2 rounded-full font-semibold shadow-lg">
+                        <span className="bg-gradient-to-r from-primary-800 to-secondary-600 text-white text-xs px-3 py-2 rounded-full font-semibold shadow-warm glow">
                           Featured
                         </span>
                       </div>
@@ -106,10 +106,10 @@ export default function CategoryPage(){
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                   <div className="p-6">
-                    <h3 className="font-semibold text-gray-900 text-lg mb-2 group-hover:text-purple-600 transition-colors line-clamp-2">
+                    <h3 className="font-semibold text-primary-800 text-lg mb-2 group-hover:text-secondary-600 transition-colors line-clamp-2">
                       {p.name}
                     </h3>
-                    <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    <div className="text-2xl font-bold gradient-text">
                       ₹{p.price?.toLocaleString()}
                     </div>
                   </div>

@@ -17,6 +17,7 @@ const CATEGORIES = [
 export default function ManageProducts(){
   const [list, setList] = useState([])
   const [form, setForm] = useState({name:'', price:'', category:'ladies-rings', featured:false})
+  const [description, setDescription] = useState('')
   const [file, setFile] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -41,8 +42,8 @@ export default function ManageProducts(){
   }
 
   async function create(){
-    if (!form.name || !form.price) {
-      setError('Name and price are required')
+    if (!form.name || !form.price || !description) {
+      setError('Name, price, and description are required')
       return
     }
 
@@ -62,6 +63,7 @@ export default function ManageProducts(){
         price: parseFloat(form.price),
         category: form.category,
         featured: form.featured,
+        description: description,
         imageUrl: imageUrl,
         createdAt: new Date().toISOString()
       }
@@ -71,6 +73,7 @@ export default function ManageProducts(){
       console.log('Product created successfully:', doc)
       setList(prev=>[...prev, doc])
       setForm({name:'', price:'', category:'ladies-rings', featured:false})
+      setDescription('')
       setFile(null)
       
       // Reset file input
@@ -121,7 +124,7 @@ export default function ManageProducts(){
 
   return (
     <div>
-      <h3 className="text-2xl font-bold text-brown-800 mb-6 font-serif">Manage Products</h3>
+      <h3 className="text-2xl font-bold text-primary-800 mb-6 font-serif">Manage Products</h3>
       
       {error && (
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-4">
@@ -131,37 +134,37 @@ export default function ManageProducts(){
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Create Product Form */}
-        <div className="bg-cream-50 p-6 rounded-xl border border-cream-200">
-          <h4 className="text-lg font-semibold mb-4 text-gray-800">Add New Product</h4>
+        <div className="bg-secondary-50 p-6 rounded-xl border border-secondary-200 shadow-warm">
+          <h4 className="text-lg font-semibold mb-4 text-primary-800">Add New Product</h4>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Product Name</label>
+              <label className="block text-sm font-medium text-primary-700 mb-1">Product Name</label>
               <input 
                 placeholder="Enter product name" 
                 value={form.name} 
                 onChange={e=>setForm({...form,name:e.target.value})} 
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white" 
+                className="w-full border border-secondary-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-secondary-500 bg-white hover:shadow-warm transition-all duration-300" 
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Price (₹)</label>
+              <label className="block text-sm font-medium text-primary-700 mb-1">Price (₹)</label>
               <input 
                 type="number"
                 placeholder="Enter price" 
                 value={form.price} 
                 onChange={e=>setForm({...form,price:e.target.value})} 
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white" 
+                className="w-full border border-secondary-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-secondary-500 bg-white hover:shadow-warm transition-all duration-300" 
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+              <label className="block text-sm font-medium text-primary-700 mb-1">Category</label>
               <select 
                 value={form.category} 
                 onChange={e=>setForm({...form,category:e.target.value})} 
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white"
+                className="w-full border border-secondary-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-secondary-500 bg-white hover:shadow-warm transition-all duration-300"
               >
                 {CATEGORIES.map(cat => (
                   <option key={cat.id} value={cat.id}>{cat.name}</option>
@@ -170,31 +173,42 @@ export default function ManageProducts(){
             </div>
             
             <div>
+              <label className="block text-sm font-medium text-primary-700 mb-1">Description</label>
+              <textarea 
+                placeholder="Enter product description" 
+                value={description} 
+                onChange={e=>setDescription(e.target.value)} 
+                rows={4}
+                className="w-full border border-secondary-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-secondary-500 bg-white hover:shadow-warm transition-all duration-300" 
+              />
+            </div>
+            
+            <div>
               <label className="inline-flex items-center gap-2">
                 <input 
                   type="checkbox" 
                   checked={form.featured} 
                   onChange={e=>setForm({...form,featured:e.target.checked})}
-                  className="rounded border-gray-300 text-purple-600 focus:ring-purple-500"
+                  className="rounded border-secondary-300 text-secondary-600 focus:ring-secondary-500"
                 />
-                <span className="text-sm font-medium text-gray-700">Featured Product</span>
+                <span className="text-sm font-medium text-primary-700">Featured Product</span>
               </label>
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Product Image</label>
+              <label className="block text-sm font-medium text-primary-700 mb-1">Product Image</label>
               <input 
                 type="file" 
                 accept="image/*"
                 onChange={e=>setFile(e.target.files[0])} 
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white" 
+                className="w-full border border-secondary-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-secondary-500 bg-white hover:shadow-warm transition-all duration-300" 
               />
             </div>
             
             <button 
               onClick={create} 
               disabled={loading}
-              className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-3 rounded-lg hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-all duration-200"
+              className="w-full bg-gradient-to-r from-primary-800 to-secondary-600 text-white px-4 py-3 rounded-lg hover:shadow-warm focus:outline-none focus:ring-2 focus:ring-secondary-500 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-all duration-300 transform hover:scale-105 glow"
             >
               {loading ? 'Creating...' : 'Create Product'}
             </button>
@@ -204,10 +218,10 @@ export default function ManageProducts(){
         {/* Products List */}
         <div>
           <div className="flex justify-between items-center mb-4">
-            <h4 className="text-lg font-semibold text-gray-800">All Products ({list.length})</h4>
+            <h4 className="text-lg font-semibold text-primary-800">All Products ({list.length})</h4>
             <button 
               onClick={load}
-              className="text-purple-600 hover:text-purple-800 text-sm font-medium"
+              className="text-secondary-600 hover:text-secondary-800 text-sm font-medium transition-all duration-300 hover:scale-105"
             >
               Refresh
             </button>
@@ -215,26 +229,29 @@ export default function ManageProducts(){
           
           <div className="space-y-3 max-h-96 overflow-y-auto">
             {list.length === 0 ? (
-              <div className="text-center py-8 text-gray-600 bg-gray-50 rounded-lg">
+              <div className="text-center py-8 text-primary-600 bg-secondary-50 rounded-lg shadow-warm">
                 No products found. Create your first product!
               </div>
             ) : (
               list.map(product => (
-                <div key={product.$id} className="border border-gray-200 rounded-lg p-4 bg-white shadow-lg">
+                <div key={product.$id} className="border border-secondary-200 rounded-lg p-4 bg-white shadow-warm hover:shadow-warm-lg transition-all duration-300">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <h5 className="font-semibold text-gray-800">{product.name}</h5>
+                        <h5 className="font-semibold text-primary-800">{product.name}</h5>
                         {product.featured && (
-                          <span className="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">
+                          <span className="bg-secondary-100 text-primary-800 text-xs px-2 py-1 rounded-full">
                             Featured
                           </span>
                         )}
                       </div>
                       
-                      <div className="text-sm text-gray-600 space-y-1">
+                      <div className="text-sm text-primary-600 space-y-1">
                         <div>Price: ₹{product.price}</div>
                         <div>Category: {CATEGORIES.find(c => c.id === product.category)?.name || product.category}</div>
+                        {product.description && (
+                          <div className="text-xs text-primary-500 line-clamp-2">Description: {product.description}</div>
+                        )}
                         {product.imageUrl && (
                           <div>
                             <img 
@@ -252,8 +269,8 @@ export default function ManageProducts(){
                         onClick={() => toggleFeatured(product.$id, product.featured)}
                         className={`text-xs px-3 py-1 rounded ${
                           product.featured 
-                            ? 'bg-purple-600 text-white hover:bg-purple-700' 
-                            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                            ? 'bg-secondary-600 text-white hover:bg-secondary-700 glow' 
+                            : 'bg-secondary-200 text-primary-700 hover:bg-secondary-300'
                         }`}
                       >
                         {product.featured ? 'Remove Featured' : 'Make Featured'}
@@ -261,7 +278,7 @@ export default function ManageProducts(){
                       
                       <button 
                         onClick={() => remove(product.$id)} 
-                        className="text-xs px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"
+                        className="text-xs px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 transition-all duration-300 hover:scale-105"
                       >
                         Delete
                       </button>

@@ -65,13 +65,13 @@ export default function HeroCarousel(){
                     <div className="text-sm font-semibold tracking-[0.2em] text-purple-300 mb-4 uppercase">
                       {slide.subtitle}
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-bold mb-6 font-serif leading-tight">
+                    <h1 className="text-5xl md:text-7xl font-bold mb-6 font-serif leading-tight slide-in-left">
                       {slide.title}
                     </h1>
-                    <p className="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed font-light">
+                    <p className="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed font-light slide-in-right">
                       {slide.description}
                     </p>
-                    <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 uppercase tracking-wide">
+                    <button className="bg-gradient-to-r from-primary-800 to-secondary-600 text-white px-10 py-4 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-110 uppercase tracking-wide glow bounce-in">
                       {slide.buttonText}
                     </button>
                   </div>
