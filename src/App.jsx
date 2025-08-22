@@ -9,6 +9,7 @@ import ProductDetail from './pages/ProductDetail'
 
 export default function App(){
   return (
+    
     <AuthProvider>
       <div className="min-h-screen flex flex-col">
         <Routes>

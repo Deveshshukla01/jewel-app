@@ -1,6 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+@import "tailwindcss";
+
+
+
+
+
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -24,6 +33,12 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* @theme {
+  --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
+} */
+
+
 
 /* Custom animations */
 @keyframes fadeInUp {
@@ -220,6 +235,28 @@ html {
 .loading-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
+
+@keyframes marquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes marquee2 {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee {
+  animation: marquee 15s linear infinite;
+}
+
+.animate-marquee2 {
+  animation: marquee2 15s linear infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 
 @keyframes pulse {
   0%, 100% {

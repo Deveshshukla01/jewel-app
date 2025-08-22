@@ -57,8 +57,7 @@ export default {
         }
       },
       fontFamily: {
-        'serif': ['Georgia', 'serif'],
-        'elegant': ['Playfair Display', 'serif'],
+        gilda: ['"Gilda Display"', "serif"],
       },
       animation: {
         'fade-in-up': 'fadeInUp 0.8s ease-out',
