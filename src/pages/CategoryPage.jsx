@@ -14,6 +14,7 @@ import {
   Link2,
   Layers,
 } from "lucide-react";
+import FloatingWhatsApp from "../components/Whatsapp";
 
 const CATEGORY_NAMES = {
   "ladies-rings": { name: "Ladies Rings", icon: <Gem className="w-4 h-4" /> },
@@ -202,6 +203,7 @@ export default function CategoryPage() {
           </div>
         </div>
       </div>
+      <FloatingWhatsApp/>
 
       <Footer />
     </div>
