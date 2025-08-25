@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 
 const categories = [
   { id: 'ladies-rings', name: 'Ladies Rings', img: '/Categories/ladies.png' },
-  { id: 'gents-rings', name: 'Gente Rings', img: '/Categories/bracelet.png' },
-  { id: 'earings', name: 'Earings', img: '/Categories/ladies.png' },
-  { id: 'bangles-karas', name: 'Bangles | karas', img: '/Categories/bracelet.png' },
+  { id: 'gents-rings', name: 'Gents Rings', img: '/Categories/2.png' },
+  { id: 'earings', name: 'Earings', img: '/Categories/earings.png' },
+  { id: 'bangles-karas', name: 'Bangles | karas', img: '/Categories/3.png' },
   { id: 'chains', name: 'Chains', img: '/Categories/chains.png' },
-  { id: 'bracelets', name: 'Bracelets', img: '/Categories/bracelet.png' },
-  { id: 'mangalsutra', name: 'Mangalsutra', img: '/Categories/ladies.png' },
+  { id: 'bracelets', name: 'Bracelets', img: '/Categories/bracelet.jpg' },
+  { id: 'mangalsutra', name: 'Mangalsutra', img: '/Categories/5.png' },
   { id: 'pendant-sets', name: 'Pendant Sets', img: '/Categories/ladies.png' },
   { id: 'pendants', name: 'Pendants', img: '/Categories/pendants.png' },
   { id: 'diamonds', name: 'Diamonds', img: '/Categories/diamonds.png' },
