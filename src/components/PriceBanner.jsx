@@ -222,11 +222,79 @@
 //   )
 // }
 
-import React, { useEffect, useState } from 'react'
-import { databases, DATABASE_ID, COLLECTIONS } from '../appwrite/config'
+
+
+
+
+
+// import React, { useEffect, useState } from 'react'
+// import { databases, DATABASE_ID, COLLECTIONS } from '../appwrite/config'
+
+// export default function PriceBanner() {
+//   const [text, setText] = useState('Gold Price: ₹1000 | Silver Price: ₹650')
+
+//   useEffect(() => {
+//     async function fetchBanner() {
+//       try {
+//         const resp = await databases.listDocuments(
+//           DATABASE_ID,
+//           COLLECTIONS.banner
+//         )
+//         if (resp.total > 0) {
+//           setText(resp.documents[0].text || text)
+//         }
+//       } catch (err) {
+//         console.error('Banner fetch error', err)
+//       }
+//     }
+//     fetchBanner()
+//     const interval = setInterval(fetchBanner, 300000)
+//     return () => clearInterval(interval)
+//   }, [])
+
+//   return (
+//     <div className="bg-[#ebcc78] py-2 overflow-hidden relative font-serif">
+//       {/* shimmer overlay */}
+//       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
+
+//       {/* marquee wrapper */}
+//       <div className="relative z-10 flex whitespace-nowrap">
+//         {/* First loop */}
+//         <div className="flex animate-marquee">
+//           <span className="text-[#542018] text-sm sm:text-lg font-semibold px-8">
+//             {text}
+//           </span>
+//           <span className="text-[#542018] text-sm sm:text-lg font-semibold px-8">
+//             {text}
+//           </span>
+//           <span className="text-[#542018] text-sm sm:text-lg font-semibold px-8">
+//             {text}
+//           </span>
+//         </div>
+
+//         {/* Second loop (delayed start, prevents overlap) */}
+//         <div className="flex animate-marquee delay-[10s]">
+//           <span className="text-[#542018] text-sm sm:text-lg font-semibold px-8">
+//             {text}
+//           </span>
+//           <span className="text-[#542018] text-sm sm:text-lg font-semibold px-8">
+//             {text}
+//           </span>
+//           <span className="text-[#542018] text-sm sm:text-lg font-semibold px-8">
+//             {text}
+//           </span>
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
+
+
+import React, { useEffect, useState } from "react";
+import { databases, DATABASE_ID, COLLECTIONS } from "../appwrite/config";
 
 export default function PriceBanner() {
-  const [text, setText] = useState('Gold Price: ₹1000 | Silver Price: ₹650')
+  const [text, setText] = useState("Gold Price: ₹1000 | Silver Price: ₹650");
 
   useEffect(() => {
     async function fetchBanner() {
@@ -234,18 +302,29 @@ export default function PriceBanner() {
         const resp = await databases.listDocuments(
           DATABASE_ID,
           COLLECTIONS.banner
-        )
+        );
         if (resp.total > 0) {
-          setText(resp.documents[0].text || text)
+          setText(resp.documents[0].text || text);
         }
       } catch (err) {
-        console.error('Banner fetch error', err)
+        console.error("Banner fetch error", err);
       }
     }
-    fetchBanner()
-    const interval = setInterval(fetchBanner, 300000)
-    return () => clearInterval(interval)
-  }, [])
+    fetchBanner();
+    const interval = setInterval(fetchBanner, 300000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Utility: repeat text based on screen size
+  const renderSpans = (count) =>
+    [...Array(count)].map((_, i) => (
+      <span
+        key={i}
+        className="text-[#542018] text-sm sm:text-lg font-semibold px-8 flex-shrink-0 min-w-full"
+      >
+        {text}
+      </span>
+    ));
 
   return (
     <div className="bg-[#ebcc78] py-2 overflow-hidden relative font-serif">
@@ -256,30 +335,17 @@ export default function PriceBanner() {
       <div className="relative z-10 flex whitespace-nowrap">
         {/* First loop */}
         <div className="flex animate-marquee">
-          <span className="text-[#542018] text-sm sm:text-lg font-semibold px-8">
-            {text}
-          </span>
-          <span className="text-[#542018] text-sm sm:text-lg font-semibold px-8">
-            {text}
-          </span>
-          <span className="text-[#542018] text-sm sm:text-lg font-semibold px-8">
-            {text}
-          </span>
+          {/* mobile → 1 span, laptop/tablet → 2 spans */}
+          <div className="block sm:hidden">{renderSpans(1)}</div>
+          <div className="hidden sm:flex">{renderSpans(2)}</div>
         </div>
 
-        {/* Second loop (delayed start, prevents overlap) */}
-        <div className="flex animate-marquee delay-[10s]">
-          <span className="text-[#542018] text-sm sm:text-lg font-semibold px-8">
-            {text}
-          </span>
-          <span className="text-[#542018] text-sm sm:text-lg font-semibold px-8">
-            {text}
-          </span>
-          <span className="text-[#542018] text-sm sm:text-lg font-semibold px-8">
-            {text}
-          </span>
+        {/* Second loop (delayed start) */}
+        <div className="flex animate-marquee animation-delay-20s">
+          <div className="block sm:hidden">{renderSpans(1)}</div>
+          <div className="hidden sm:flex">{renderSpans(2)}</div>
         </div>
       </div>
     </div>
-  )
+  );
 }
