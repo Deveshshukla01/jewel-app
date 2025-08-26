@@ -872,8 +872,10 @@ const CATEGORIES = [
   { id: 'bracelets', name: 'Bracelets', img: '/Categories/bracelet.png' },
   { id: 'mangalsutra', name: 'Mangalsutra', img: '/Categories/5.png' },
   { id: 'pendant-sets', name: 'Pendant Sets', img: '/Categories/pendantset.png' },
-  { id: 'diamonds', name: 'Diamonds', img: '/Categories/diamonds.png' },
+  
   { id: 'pendants', name: 'Pendants', img: '/Categories/pendants.png' },
+  { id: 'diamonds', name: 'Diamonds', img: '/Categories/diamonds.png' },
+  { id: 'gems', name: 'Gem Stone', img: '/Categories/Gems.png' }
 ]
 
 export default function Navbar() {
@@ -977,11 +979,12 @@ export default function Navbar() {
               <a href="#featured" className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition-colors duration-200">
                 <Star size={18}/> Featured
               </a>
-              <a href="#footer" className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition-colors duration-200">
-                <Phone size={18}/> Contact Us
-              </a>
+             
               <a href="#contact" className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition-colors duration-200">
-                <Store size={18}/> Silver Store
+                <Store size={18}/> Silver Store - Gurmeena
+              </a>
+              <a href="#footer" className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition-colors duration-200">
+                <Phone size={18}/> Contact us
               </a>
             </>
           ) : (

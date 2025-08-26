@@ -453,8 +453,9 @@ const CATEGORY_NAMES = {
   "bracelets": { name: "Bracelets", icon: <Sparkles className="w-4 h-4" /> },
   "mangalsutra": { name: "Mangalsutra", icon: <Diamond className="w-4 h-4" /> },
   "pendant-sets": { name: "Pendant Sets", icon: <Gem className="w-4 h-4" /> },
-  "diamonds": { name: "Diamonds", icon: <Diamond className="w-4 h-4" /> },
   "pendants": { name: "Pendants", icon: <Sparkles className="w-4 h-4" /> },
+  "diamonds": { name: "Diamonds", icon: <Diamond className="w-4 h-4" /> },
+  "gems": { name: "Gem Stones", icon: <Sparkles className="w-4 h-4" /> },
 };
 
 export default function CategoryPage() {

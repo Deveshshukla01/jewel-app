@@ -13,6 +13,7 @@ const categories = [
   { id: 'pendant-sets', name: 'Pendant Sets', img: '/Categories/ladies.png' },
   { id: 'pendants', name: 'Pendants', img: '/Categories/pendants.png' },
   { id: 'diamonds', name: 'Diamonds', img: '/Categories/diamonds.png' },
+  { id: 'gems', name: 'Gem Stone', img: '/Categories/Gems.png' }
 ];
 
 export default function Categories() {

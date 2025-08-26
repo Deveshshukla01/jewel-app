@@ -316,6 +316,7 @@ const CATEGORIES = [
   { id: "pendant-sets", name: "Pendant Sets" },
   { id: "diamonds", name: "Diamonds" },
   { id: "pendants", name: "Pendants" },
+  { id: "gems", name: "Gem Stone" }
 ];
 
 export default function ManageProducts() {

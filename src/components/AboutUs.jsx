@@ -64,7 +64,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 export default function About({
   images = [],
-  title = "About us.",
+  title = "About us",
   desc =
     "At Sethi jewel, we have always believed in achieving excellence & our awards are a testimony to this fact. Sethi Jewellers has won several awards at the national level in the last 5 years, making us one of the most respected jewellery retail brands in North India.",
   ctaText = "AWARDS",
