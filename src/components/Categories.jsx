@@ -116,13 +116,13 @@ export default function Categories() {
 <div className="text-center mb-12">
   {/* Heading with underline */}
   <div className="relative inline-block">
-    <h2 className="text-4xl md:text-5xl text-[#542018] mb-4 md:mb-2 font-serif relative z-10">
+    <h2 className="text-4xl md:text-5xl text-[#542018] mb-1 md:mb-2 font-serif relative z-10">
       Find Your Perfect Match
     </h2>
     <img
       src="/underline.png"
       alt="underline"
-      className="absolute left-1/2 -translate-x-1/2  -bottom-3 md:-bottom-2 w-48 md:w-64"
+      className="absolute left-1/2 -translate-x-1/2 -bottom-2 md:-bottom-2 w-48 md:w-64"
     />
   </div>
 
@@ -131,6 +131,7 @@ export default function Categories() {
     Shop by Category
   </h4>
 </div>
+
 
 
 
