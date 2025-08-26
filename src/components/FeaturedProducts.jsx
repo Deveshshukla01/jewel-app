@@ -279,11 +279,31 @@ export default function FeaturedProducts() {
       <div className="relative container mx-auto px-4 max-w-7xl font-serif">
         
         {/* Heading */}
-        <div className="text-center mb-12">
+        {/* <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-serif mb-3" style={{ color: '#542018' }}>
             Featured Products
           </h2>
-        </div>
+        </div> */}
+
+
+        <div className="text-center mb-12">
+  <div className="relative inline-block">
+    <h2
+      className="text-3xl md:text-5xl font-serif relative z-10"
+      style={{ color: "#542018" }}
+    >
+      Featured Products
+    </h2>
+    <img
+      src="/underline.png"
+      alt="underline"
+      className="absolute left-1/2 -translate-x-1/2 -bottom-2 w-40 md:w-60"
+    />
+  </div>
+</div>
+
+
+
 
         {/* Loading */}
         {loading && (
