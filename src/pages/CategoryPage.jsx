@@ -447,7 +447,7 @@ import FloatingWhatsApp from "../components/Whatsapp";
 const CATEGORY_NAMES = {
   "ladies-rings": { name: "Ladies Rings", icon: <Gem className="w-4 h-4" /> },
   "gents-rings": { name: "Gents Rings", icon: <Circle className="w-4 h-4" /> },
-  "earings": { name: "Earings", icon: <CircleDot className="w-4 h-4" /> },
+  "earings": { name: "Earrings", icon: <CircleDot className="w-4 h-4" /> },
   "bangles-karas": { name: "Bangles / Karas", icon: <Layers className="w-4 h-4" /> },
   "chains": { name: "Chains", icon: <Link2 className="w-4 h-4" /> },
   "bracelets": { name: "Bracelets", icon: <Sparkles className="w-4 h-4" /> },
