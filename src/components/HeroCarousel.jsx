@@ -373,10 +373,10 @@ import "swiper/css/effect-fade";
 
 const JewelryHeroCarousel = () => {
   const slides = [
-    "https://images.pexels.com/photos/1191531/pexels-photo-1191531.jpeg",
-    "https://images.pexels.com/photos/1453005/pexels-photo-1453005.jpeg",
-    "https://images.pexels.com/photos/3641056/pexels-photo-3641056.jpeg",
-    "https://images.pexels.com/photos/267202/pexels-photo-267202.jpeg",
+    "Carousel/1.jpg",
+    "Carousel/2.jpg",
+    "Carousel/3.jpg",
+    
   ];
 
   return (

@@ -48,7 +48,7 @@ export default function ManageBanner(){
         </div>
         <button 
           onClick={save} 
-          className="bg-gradient-to-r from-primary-800 to-secondary-600 text-white px-6 py-3 rounded-lg hover:shadow-warm transition-all duration-300 font-medium transform hover:scale-105 glow"
+          className="bg-gradient-to-r from-primary-800 to-secondary-600 text-black px-6 py-3 rounded-lg hover:shadow-warm transition-all duration-300 font-medium transform hover:scale-105 glow"
         >
           Save Banner
         </button>

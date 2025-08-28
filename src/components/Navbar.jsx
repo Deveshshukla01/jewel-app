@@ -984,7 +984,7 @@ export default function Navbar() {
                 <Store size={18}/> Silver Store - Gurmeena
               </a>
               <a href="#footer" className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition-colors duration-200">
-                <Phone size={18}/> Contact us
+                <Phone size={18}/> Contact Us
               </a>
             </>
           ) : (
