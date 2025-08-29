@@ -1,12 +1,14 @@
 import React from "react";
-import { Facebook, Instagram, Twitter, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import { FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp } from "react-icons/fa";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="bg-[#542018] text-amber-100 mt-auto relative">
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-16 font-serif">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          {/* Brand */}
+          
+          {/* Brand Section */}
           <div className="md:col-span-2">
             <div className="flex items-center mb-6">
               <img
@@ -18,44 +20,46 @@ export default function Footer() {
                 Sethi Jewellers
               </span>
             </div>
-            <p className="text-amber-200 mb-6 leading-relaxed text-lg">
+            <p className="text-amber-200 mb-6 leading-relaxed text-lg max-w-xl">
               Crafting timeless jewelry that celebrates life’s precious moments. 
               Each masterpiece is meticulously designed and handcrafted with love & precision.
             </p>
 
-            {/* Social Links */}
+            {/* Social Media Links */}
             <div className="flex space-x-5">
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full border border-amber-500 hover:bg-yellow-400 hover:text-[#542018] transition-all duration-300 shadow-md"
+                className="p-3 rounded-full bg-white hover:scale-110 transition-all duration-300 shadow-lg"
               >
-                <Facebook size={20} />
+                <FaFacebookF size={22} className="text-[#1877F2]" />
               </a>
               <a
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full border border-amber-500 hover:bg-yellow-400 hover:text-[#542018] transition-all duration-300 shadow-md"
+                className="p-3 rounded-full bg-white hover:scale-110 transition-all duration-300 shadow-lg"
               >
-                <Instagram size={20} />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full border border-amber-500 hover:bg-yellow-400 hover:text-[#542018] transition-all duration-300 shadow-md"
-              >
-                <Twitter size={20} />
+                {/* Instagram gradient logo */}
+                <FaInstagram size={22} className="text-[#E4405F]" />
+
               </a>
               <a
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 rounded-full border border-amber-500 hover:bg-yellow-400 hover:text-[#542018] transition-all duration-300 shadow-md"
+                className="p-3 rounded-full bg-white hover:scale-110 transition-all duration-300 shadow-lg"
               >
-                <Youtube size={20} />
+                <FaYoutube size={22} className="text-[#FF0000]" />
+              </a>
+              <a
+                href="https://wa.me/919876543210"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full bg-white hover:scale-110 transition-all duration-300 shadow-lg"
+              >
+                <FaWhatsapp size={22} className="text-[#25D366]" />
               </a>
             </div>
           </div>
@@ -64,38 +68,16 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-semibold mb-6 text-yellow-300">Quick Links</h3>
             <ul className="space-y-3 text-lg">
-              <li>
-                <a
-                  href="#about"
-                  className="hover:text-yellow-400 transition-all duration-300 hover:translate-x-2 inline-block"
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#categories"
-                  className="hover:text-yellow-400 transition-all duration-300 hover:translate-x-2 inline-block"
-                >
-                  Categories
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#featured"
-                  className="hover:text-yellow-400 transition-all duration-300 hover:translate-x-2 inline-block"
-                >
-                  Featured
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#custom"
-                  className="hover:text-yellow-400 transition-all duration-300 hover:translate-x-2 inline-block"
-                >
-                  Custom Orders
-                </a>
-              </li>
+              {["About Us", "Categories", "Featured", "Custom Orders"].map((link, i) => (
+                <li key={i}>
+                  <a
+                    href={`#${link.toLowerCase().replace(" ", "")}`}
+                    className="hover:text-yellow-400 transition-all duration-300 hover:translate-x-2 inline-block"
+                  >
+                    {link}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -125,7 +107,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-amber-700 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-amber-300 text-sm">
+          <div className="text-amber-300 text-sm text-center md:text-left">
             © {new Date().getFullYear()}{" "}
             <span className="text-yellow-400 font-semibold">Sethi Jewellers</span>. All rights reserved. 
             Crafted with <span className="text-red-400">❤️</span>

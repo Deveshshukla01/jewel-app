@@ -105,33 +105,15 @@ export default function Categories() {
       <div className="absolute inset-0 bg-white/70"></div>
       <div className="relative container mx-auto px-6 max-w-7xl">
 
-        {/* <div className="text-center mb-12">
+        <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl text-[#542018] mb-2 font-serif">
             Find Your Perfect Match
           </h2>
           <h4 className="text-2xl md:text-2xl text-[#542018] mb-2 font-serif">
             Shop by Category
           </h4>
-        </div> */}
-
-<div className="text-center mb-12">
-  {/* Heading with underline */}
-  <div className="relative inline-block">
-    <h2 className="text-4xl md:text-5xl text-[#542018] mb-1 md:mb-2 font-serif relative z-10">
-      Find Your Perfect Match
-    </h2>
-    <img
-      src="/underline.png"
-      alt="underline"
-      className="absolute left-1/2 -translate-x-1/2 -bottom-2 md:-bottom-2 w-48 md:w-64"
-    />
-  </div>
-
-  {/* Subheading */}
-  <h4 className="text-2xl md:text-2xl text-[#542018] mt-6 font-serif">
-    Shop by Category
-  </h4>
-</div>
+        </div>
+        
 
 
 
