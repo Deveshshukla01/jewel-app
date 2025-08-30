@@ -218,10 +218,10 @@ import { motion } from "framer-motion";
 
 export default function InstagramPosts({ posts: userPosts }) {
   const defaultPosts = [
-    "https://www.instagram.com/reel/DN5mwJBkpfo/?utm_source=ig_embed&utm_campaign=loading",
-    "https://www.instagram.com/reel/DN5mwJBkpfo/?utm_source=ig_embed&utm_campaign=loading",
-    "https://www.instagram.com/reel/DN5mwJBkpfo/?utm_source=ig_embed&utm_campaign=loading",
-    "https://www.instagram.com/reel/DN5mwJBkpfo/?utm_source=ig_embed&utm_campaign=loading",
+    "https://www.instagram.com/reel/DM-sz4Yv008/?igsh=MXFpdXhqcGUwZzkxYg==",
+    "https://www.instagram.com/reel/DNni0boyHi2/?igsh=MWFud3l6d3hjYTRyMA==",
+    "https://www.instagram.com/reel/DLcvw-lyCQC/?igsh=ZmR3NTlkN2M2aHE5",
+    "https://www.instagram.com/reel/DNLJAUJyKCn/?igsh=MTBydWw5YmFueGJqbA==",
   ];
 
   const posts = userPosts && userPosts.length ? userPosts : defaultPosts;
