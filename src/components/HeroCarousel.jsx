@@ -10,11 +10,10 @@ const JewelryHeroCarousel = () => {
   const slides = [
     "Carousel/1.jpg",
     "Carousel/2.jpg",
-    "Carousel/3.jpg",
   ];
 
   return (
-    <div className="w-full h-[70vh] md:h-[80vh] relative">
+    <div className="w-full h-auto md:h-[80vh] relative">
       <Swiper
         modules={[Pagination, Autoplay, EffectFade]}
         slidesPerView={1}
@@ -33,7 +32,7 @@ const JewelryHeroCarousel = () => {
             <img
               src={src}
               alt={`Jewelry ${idx + 1}`}
-              className="w-full h-full object-cover"
+              className="w-full h-auto md:h-full object-contain md:object-cover"
             />
           </SwiperSlide>
         ))}

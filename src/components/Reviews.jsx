@@ -189,7 +189,7 @@ export default function Reviews() {
     <div
       id="reviews"
       className="relative py-16 sm:py-20 bg-cover bg-center"
-      style={{ backgroundImage: "url('/Background/Categories.jpg')" }}
+      // style={{ backgroundImage: "url('/Background/Categories.jpg')" }}
     >
       {/* Overlay with gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-[#f8e9d8]/80"></div>

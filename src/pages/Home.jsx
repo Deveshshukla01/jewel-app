@@ -11,6 +11,7 @@ import CareGuides from '../components/PDF'
 import Carousel from '../components/Carousel-Mid'
 import About from '../components/AboutUs'
 import FloatingWhatsApp from '../components/Whatsapp'
+import InstagramPosts from '../components/Instagram'
 
 
 export default function Home(){
@@ -26,6 +27,7 @@ export default function Home(){
       <Carousel/>
       <FeaturedProducts />
       <CareGuides/>
+      <InstagramPosts/>
       <Reviews />
       <FloatingWhatsApp/>
       <Footer />
