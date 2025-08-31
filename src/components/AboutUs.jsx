@@ -166,7 +166,7 @@ We hereby welcome you all to visit our store in Chandigarh, or schedule a video 
       <div className="max-w-7xl mx-auto px-4 md:grid md:grid-cols-2 gap-10 items-center">
         {/* LEFT: Content */}
         <div className="space-y-5 text-center md:text-left">
-          <h2 className="text-3xl md:text-5xl text-center leading-tight text-[#542018]">
+          <h2 className="text-2xl md:text-5xl text-center leading-tight text-[#542018]">
             {title}
           </h2>
           <p className="text-[#542018] leading-relaxed">{desc}</p>
