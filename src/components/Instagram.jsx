@@ -92,34 +92,9 @@ export default function InstagramPosts({ posts: userPosts }) {
         ))}
       </div>
 
-      {/* Mobile slider */}
-      <div className="lg:hidden w-full max-w-md mx-auto relative">
-        {/* arrows */}
       
-<button
-  onClick={prev}
-  aria-label="previous"
-  disabled={currentIndex === 0}
-  className="absolute left-1 top-1/2 z-20 -translate-y-1/2 
-             text-black rounded-full w-10 h-10 flex 
-             items-center justify-center text-2xl
-             disabled:opacity-40"
->
-  ‹
-</button>
-
-<button
-  onClick={next}
-  aria-label="next"
-  disabled={currentIndex === posts.length - 1}
-  className="absolute right-1 top-1/2 z-20 -translate-y-1/2 
-             text-black rounded-full w-10 h-10 flex 
-             items-center justify-center text-2xl
-             disabled:opacity-40"
->
-  ›
-</button>
-
+     {/* Mobile slider */}
+      <div className="lg:hidden w-full max-w-md mx-auto relative">
         {/* viewport */}
         <div className="overflow-hidden relative">
           <motion.div
@@ -128,7 +103,18 @@ export default function InstagramPosts({ posts: userPosts }) {
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.2}
-            onDragEnd={handleDragEnd}
+            onDragEnd={(event, info) => {
+              const offset = info.offset.x;
+              const velocity = info.velocity.x;
+
+              if (offset < -50 || velocity < -500) {
+                // swipe left → next
+                setCurrentIndex((prev) => Math.min(posts.length - 1, prev + 1));
+              } else if (offset > 50 || velocity > 500) {
+                // swipe right → prev
+                setCurrentIndex((prev) => Math.max(0, prev - 1));
+              }
+            }}
             animate={{ x: `-${currentIndex * 100}%` }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
@@ -188,6 +174,7 @@ export default function InstagramPosts({ posts: userPosts }) {
           ))}
         </div>
       </div>
+
     </section>
   );
 }
