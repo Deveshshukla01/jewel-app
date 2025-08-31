@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function InstagramPosts({ posts: userPosts }) {
   const defaultPosts = [
@@ -12,7 +13,6 @@ export default function InstagramPosts({ posts: userPosts }) {
   const posts = userPosts && userPosts.length ? userPosts : defaultPosts;
   const [currentIndex, setCurrentIndex] = useState(0);
   const slideRefs = useRef([]);
-  const trackRef = useRef(null);
   const [loaded, setLoaded] = useState(Array(posts.length).fill(false));
 
   useEffect(() => {
@@ -20,7 +20,9 @@ export default function InstagramPosts({ posts: userPosts }) {
 
     function processEmbeds() {
       try {
-        window.instgrm && window.instgrm.Embeds && window.instgrm.Embeds.process();
+        window.instgrm &&
+          window.instgrm.Embeds &&
+          window.instgrm.Embeds.process();
       } catch (e) {}
     }
 
@@ -61,12 +63,16 @@ export default function InstagramPosts({ posts: userPosts }) {
   const prev = () => setCurrentIndex((p) => Math.max(0, p - 1));
   const next = () => setCurrentIndex((p) => Math.min(posts.length - 1, p + 1));
 
+  // Fixed swipe detection
   const handleDragEnd = (event, info) => {
     const offset = info.offset.x;
     const velocity = info.velocity.x;
-    if (offset < -80 || velocity < -500) next();
-    else if (offset > 80 || velocity > 500) prev();
-    else setCurrentIndex((i) => i);
+
+    if (offset < -80 || velocity < -800) {
+      next();
+    } else if (offset > 80 || velocity > 800) {
+      prev();
+    }
   };
 
   return (
@@ -83,7 +89,8 @@ export default function InstagramPosts({ posts: userPosts }) {
               background: "#FFF",
               border: 0,
               borderRadius: "10px",
-              boxShadow: "0 0 1px rgba(0,0,0,0.12), 0 6px 22px rgba(0,0,0,0.08)",
+              boxShadow:
+                "0 0 1px rgba(0,0,0,0.12), 0 6px 22px rgba(0,0,0,0.08)",
               margin: "auto",
               maxWidth: "280px",
               width: "280px",
@@ -92,29 +99,16 @@ export default function InstagramPosts({ posts: userPosts }) {
         ))}
       </div>
 
-      
-     {/* Mobile slider */}
+      {/* Mobile slider */}
       <div className="lg:hidden w-full max-w-md mx-auto relative">
         {/* viewport */}
         <div className="overflow-hidden relative">
           <motion.div
-            ref={trackRef}
             className="flex"
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.2}
-            onDragEnd={(event, info) => {
-              const offset = info.offset.x;
-              const velocity = info.velocity.x;
-
-              if (offset < -50 || velocity < -500) {
-                // swipe left → next
-                setCurrentIndex((prev) => Math.min(posts.length - 1, prev + 1));
-              } else if (offset > 50 || velocity > 500) {
-                // swipe right → prev
-                setCurrentIndex((prev) => Math.max(0, prev - 1));
-              }
-            }}
+            onDragEnd={handleDragEnd}
             animate={{ x: `-${currentIndex * 100}%` }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
@@ -160,8 +154,34 @@ export default function InstagramPosts({ posts: userPosts }) {
           </motion.div>
         </div>
 
+        {/* Prev/Next buttons */}
+        <div className="flex justify-center items-center gap-6 mt-4">
+          <button
+            onClick={prev}
+            disabled={currentIndex === 0}
+            className={`p-2 border-2 rounded-full transition ${
+              currentIndex === 0
+                ? "opacity-40 cursor-not-allowed border-[#542018] text-[#542018]"
+                : "border-[#542018] text-[#542018] hover:bg-[#542018] hover:text-white"
+            }`}
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            onClick={next}
+            disabled={currentIndex === posts.length - 1}
+            className={`p-2 border-2 rounded-full transition ${
+              currentIndex === posts.length - 1
+                ? "opacity-40 cursor-not-allowed border-[#542018] text-[#542018]"
+                : "border-[#542018] text-[#542018] hover:bg-[#542018] hover:text-white"
+            }`}
+          >
+            <ChevronRight size={20} />
+          </button>
+        </div>
+
         {/* dots */}
-        <div className="flex justify-center gap-2 mt-4">
+        <div className="flex justify-center gap-2 mt-3">
           {posts.map((_, i) => (
             <button
               key={i}
@@ -174,8 +194,6 @@ export default function InstagramPosts({ posts: userPosts }) {
           ))}
         </div>
       </div>
-
     </section>
   );
 }
-
