@@ -28,7 +28,7 @@ export default function Footer() {
             {/* Social Media Links */}
             <div className="flex space-x-5">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/share/1B2na9Lwa8/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white hover:scale-110 transition-all duration-300 shadow-lg"
@@ -36,7 +36,7 @@ export default function Footer() {
                 <FaFacebookF size={22} className="text-[#1877F2]" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/sethijewellers16?igsh=b2N2cnJza2l3dmN2"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white hover:scale-110 transition-all duration-300 shadow-lg"
@@ -45,16 +45,16 @@ export default function Footer() {
                 <FaInstagram size={22} className="text-[#E4405F]" />
 
               </a>
-              <a
+              {/* <a
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white hover:scale-110 transition-all duration-300 shadow-lg"
               >
                 <FaYoutube size={22} className="text-[#FF0000]" />
-              </a>
+              </a> */}
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/917373616115"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white hover:scale-110 transition-all duration-300 shadow-lg"
@@ -87,7 +87,7 @@ export default function Footer() {
             <div className="space-y-4 text-lg text-amber-200">
               <div className="flex items-center">
                 <Phone className="mr-3 text-yellow-300" size={20} />
-                <span>+91 98765 43210</span>
+                <span>+91 73736 16115</span>
               </div>
               <div className="flex items-center">
                 <Mail className="mr-3 text-yellow-300" size={20} />
