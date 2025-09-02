@@ -1,8 +1,21 @@
-import React from "react";
-import { FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp } from "react-icons/fa";
+// import React from "react";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Footer() {
+  const { user } = useAuth();
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith("/admin");
+
+  // Button logic reused from Navbar
+  const to = isAdmin ? "/" : "/admin";
+  const label = isAdmin ? "Home" : user ? "Dashboard" : "Admin";
+  const variantClasses = user
+    ? "bg-[#542018] text-white hover:bg-[#3d1611]"
+    : "bg-gray-100 text-[#542018] hover:bg-gray-200";
+
   return (
     <footer className="bg-[#542018] text-amber-100 mt-auto relative">
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-16 font-serif">
@@ -41,18 +54,8 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white hover:scale-110 transition-all duration-300 shadow-lg"
               >
-                {/* Instagram gradient logo */}
                 <FaInstagram size={22} className="text-[#E4405F]" />
-
               </a>
-              {/* <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full bg-white hover:scale-110 transition-all duration-300 shadow-lg"
-              >
-                <FaYoutube size={22} className="text-[#FF0000]" />
-              </a> */}
               <a
                 href="https://wa.me/917373616115"
                 target="_blank"
@@ -106,13 +109,22 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-amber-700 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-amber-700 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-amber-300 text-sm text-center md:text-left">
             © {new Date().getFullYear()}{" "}
             <span className="text-yellow-400 font-semibold">Sethi Jewellers</span>. All rights reserved. 
-            Crafted with <span className="text-red-400">❤️</span>
+            Crafted with <span className="text-red-400">love</span>
           </div>
-          <div className="flex space-x-8 mt-4 md:mt-0 text-sm text-amber-300">
+
+          {/* Admin/Dashboard Toggle Button */}
+          <Link
+            to={to}
+            className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full font-serif font-medium text-sm md:text-base transition-colors duration-200 ${variantClasses}`}
+          >
+            {label}
+          </Link>
+
+          <div className="flex space-x-8 text-sm text-amber-300">
             <a href="#" className="hover:text-yellow-400 transition-all duration-300">Privacy Policy</a>
             <a href="#" className="hover:text-yellow-400 transition-all duration-300">Terms of Service</a>
             <a href="#" className="hover:text-yellow-400 transition-all duration-300">Return Policy</a>

@@ -327,7 +327,7 @@ export default function PriceBanner() {
     ));
 
   return (
-    <div className="bg-[#ebcc78] py-2 overflow-hidden relative font-serif">
+    <div className="bg-[#ebcc78] py-2 overflow-hidden relative font-serif mb-2">
       {/* shimmer overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
 

@@ -32,7 +32,7 @@ export default function Navbar() {
         {/* Top Row */}
         <div className="w-full flex items-center justify-between">
           {/* Admin/Dashboard Button */}
-          <div className="w-16 md:w-20 flex justify-start md:justify-end">
+          {/* <div className="w-16 md:w-20 flex justify-start md:justify-end">
             <Link
               to={isAdmin ? '/' : '/admin'}
               className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full font-serif font-medium text-sm md:text-base transition-colors duration-200 ${
@@ -43,7 +43,7 @@ export default function Navbar() {
             >
               {isAdmin ? 'Home' : user ? 'Dashboard' : 'Admin'}
             </Link>
-          </div>
+          </div> */}
 
           {/* Logo */}
           <Link to="/" className="flex justify-center flex-1">
