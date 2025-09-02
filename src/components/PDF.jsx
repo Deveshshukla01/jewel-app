@@ -97,9 +97,9 @@ export default function CareGuides() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 font-serif">
         {/* Section Logo + Heading */}
         <div className="text-center mb-8 sm:mb-12">
-          <div className="flex justify-center mb-3 sm:mb-4">
+          {/* <div className="flex justify-center mb-3 sm:mb-4">
             <Diamond className="h-8 w-8 text-[#8B4513]" />
-          </div>
+          </div> */}
           <h2 className="text-xl sm:text-2xl font-bold text-[#542018]">Helpful Guides</h2>
         </div>
 
