@@ -89,7 +89,7 @@ export default function Footer() {
             <div className="space-y-4 text-lg text-amber-200">
               <div className="flex items-center">
                 <Phone className="mr-3 text-yellow-300" size={20} />
-                <span>+91 73736 16115</span>
+                <span>+91 79736 16115</span>
               </div>
               <div className="flex items-center">
                 <Mail className="mr-3 text-yellow-300" size={20} />
@@ -98,9 +98,7 @@ export default function Footer() {
               <div className="flex items-start">
                 <MapPin className="mr-3 mt-1 text-yellow-300" size={20} />
                 <span>
-                  123 Gold Market Road
-                  <br />
-                  Mumbai, India 400001
+                  SCO 15, Sector 16D, Chandigarh, 160015
                 </span>
               </div>
             </div>
