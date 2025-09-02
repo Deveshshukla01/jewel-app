@@ -13,7 +13,8 @@ const JewelryHeroCarousel = () => {
   ];
 
   return (
-    <div className="w-full h-auto md:h-[80vh] relative">
+    <div className="w-full h-full md:h-[80vh] relative">
+
       <Swiper
         modules={[Pagination, Autoplay, EffectFade]}
         slidesPerView={1}

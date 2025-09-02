@@ -50,7 +50,7 @@ export default function Navbar() {
             <img
               src="/Logo/LogoNav.png"
               alt="sethi Logo"
-              className="h-16 md:h-24 w-auto hover:scale-105 transition-transform duration-300"
+              className="h-16 md:h-24 ml-15 w-auto hover:scale-105 transition-transform duration-300"
             />
           </Link>
 
@@ -211,3 +211,4 @@ export default function Navbar() {
     </nav>
   )
 }
+
