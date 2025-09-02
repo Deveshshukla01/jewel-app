@@ -34,8 +34,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-amber-200 mb-6 leading-relaxed text-lg max-w-xl">
-              Crafting timeless jewelry that celebrates life’s precious moments. 
-              Each masterpiece is meticulously designed and handcrafted with love & precision.
+            Your reliable jewellery destination that makes you feel special.
             </p>
 
             {/* Social Media Links */}

@@ -450,6 +450,7 @@ const CATEGORY_NAMES = {
   "earings": { name: "Earrings", icon: <CircleDot className="w-4 h-4" /> },
   "bangles-karas": { name: "Bangles / Karas", icon: <Layers className="w-4 h-4" /> },
   "chains": { name: "Chains", icon: <Link2 className="w-4 h-4" /> },
+  "sets": { name: "Sets", icon: <Link2 className="w-4 h-4" /> },
   "bracelets": { name: "Bracelets", icon: <Sparkles className="w-4 h-4" /> },
   "mangalsutra": { name: "Mangalsutra", icon: <Diamond className="w-4 h-4" /> },
   "pendant-sets": { name: "Pendant Sets", icon: <Gem className="w-4 h-4" /> },

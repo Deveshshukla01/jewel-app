@@ -8,6 +8,7 @@ const categories = [
   { id: 'earings', name: 'Earrings', img: '/Categories/earings.png' },
   { id: 'bangles-karas', name: 'Bangles | karas', img: '/Categories/3.png' },
   { id: 'chains', name: 'Chains', img: '/Categories/chains.png' },
+  { id: 'sets', name: 'Sets', img: '/Categories/pendants.png' },
   { id: 'bracelets', name: 'Bracelets', img: '/Categories/bracelet.png' },
   { id: 'mangalsutra', name: 'Mangalsutra', img: '/Categories/5.png' },
   { id: 'pendant-sets', name: 'Pendant Sets', img: '/Categories/ladies.png' },
