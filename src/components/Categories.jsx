@@ -6,13 +6,13 @@ const categories = [
   { id: 'ladies-rings', name: 'Ladies Rings', img: '/Categories/ladies.png' },
   { id: 'gents-rings', name: 'Gents Rings', img: '/Categories/2.png' },
   { id: 'earings', name: 'Earrings', img: '/Categories/earings.png' },
-  { id: 'bangles-karas', name: 'Bangles | karas', img: '/Categories/3.png' },
+  { id: 'bangles-karas', name: 'Bangles | karas', img: '' },
   { id: 'chains', name: 'Chains', img: '/Categories/chains.png' },
-  { id: 'sets', name: 'Sets', img: '/Categories/pendants.png' },
+  { id: 'sets', name: 'Sets', img: '' },
   { id: 'bracelets', name: 'Bracelets', img: '/Categories/bracelet.png' },
-  { id: 'mangalsutra', name: 'Mangalsutra', img: '/Categories/5.png' },
-  { id: 'pendant-sets', name: 'Pendant Sets', img: '/Categories/ladies.png' },
-  { id: 'pendants', name: 'Pendants', img: '/Categories/pendants.png' },
+  { id: 'mangalsutra', name: 'Mangalsutra', img: '' },
+  { id: 'pendant-sets', name: 'Pendant Sets', img: '' },
+  { id: 'pendants', name: 'Pendants', img: '' },
   { id: 'diamonds', name: 'Diamonds', img: '/Categories/diamonds.png' },
   { id: 'gems', name: 'Gem Stone', img: '/Categories/Gems.png' }
 ];

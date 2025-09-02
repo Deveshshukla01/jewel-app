@@ -70,7 +70,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-semibold mb-6 text-yellow-300">Quick Links</h3>
             <ul className="space-y-3 text-lg">
-              {["About Us", "Categories", "Featured", "Custom Orders"].map((link, i) => (
+              {["About Us", "Categories", "Featured"].map((link, i) => (
                 <li key={i}>
                   <a
                     href={`#${link.toLowerCase().replace(" ", "")}`}
@@ -112,7 +112,7 @@ export default function Footer() {
           <div className="text-amber-300 text-sm text-center md:text-left">
             © {new Date().getFullYear()}{" "}
             <span className="text-yellow-400 font-semibold">Sethi Jewellers</span>. All rights reserved. 
-            Crafted with <span className="text-red-400">love</span>
+            
           </div>
 
           {/* Admin/Dashboard Toggle Button */}
@@ -124,8 +124,8 @@ export default function Footer() {
           </Link>
 
           <div className="flex space-x-8 text-sm text-amber-300">
-            <a href="#" className="hover:text-yellow-400 transition-all duration-300">Privacy Policy</a>
             <a href="#" className="hover:text-yellow-400 transition-all duration-300">Terms of Service</a>
+            <a href="#" className="hover:text-yellow-400 transition-all duration-300">Privacy Policy</a>
             <a href="#" className="hover:text-yellow-400 transition-all duration-300">Return Policy</a>
           </div>
         </div>
