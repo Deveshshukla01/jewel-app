@@ -165,7 +165,7 @@ export default function FeaturedProducts() {
                     currentProducts.map((p) => (
                       <a
                           key={p.$id}
-                          href={`https://wa.me/917373616115?text=I%20am%20interested%20in%20featured%20product`}
+                          href={`https://wa.me/917973616115?text=I%20am%20interested%20in%20featured%20product`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
