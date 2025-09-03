@@ -237,16 +237,13 @@ html {
 }
 
 @keyframes marquee {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* shift by one full copy */
 }
 
 .animate-marquee {
-  display: flex;
-  min-width: 100%;
-  animation: marquee 20s linear infinite;
+  animation: marquee 20s linear infinite; /* adjust speed */
 }
-
 
 @keyframes pulse {
   0%, 100% {
