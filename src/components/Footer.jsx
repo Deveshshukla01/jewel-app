@@ -162,7 +162,7 @@ export default function Footer() {
     : "bg-gray-100 text-[#542018] hover:bg-gray-200";
 
   return (
-    <footer className="bg-gradient-to-b from-[#542018] to-[#3d1611] text-amber-100 mt-auto relative overflow-hidden">
+    <footer className="bg-gradient-to-b from-[#542018] to-[#3d1611] text-amber-100 mt-auto relative overflow-hidden font-serif">
       {/* Decorative background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-42 h-42 rounded-full bg-yellow-300"></div>
@@ -190,13 +190,13 @@ export default function Footer() {
                   Sethi Jewellers
                 </h2>
                 <p className="text-amber-300/70 text-sm font-medium tracking-wide">
-                  Crafting Elegance Since Forever
+                Your reliable jewellery destination that makes you feel special.
                 </p>
               </div>
             </div>
             
-            <p className="text-amber-200/90 leading-relaxed text-lg font-light max-w-md">
-              Your reliable jewellery destination that makes you feel special. We create timeless pieces that celebrate life's precious moments.
+            <p className="text-amber-200/90 leading-relaxed text-lg font-bold max-w-md">
+               Our social handles-
             </p>
 
             {/* Social Media - Redesigned */}
@@ -230,7 +230,7 @@ export default function Footer() {
               <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-yellow-400 to-transparent"></div>
             </h3>
             <nav className="space-y-3">
-              {["About Us", "Categories", "Featured"].map((link, i) => (
+              {["About Us", "Categories", "Featured Product"].map((link, i) => (
                 <a
                   key={i}
                   href={`#${link.toLowerCase().replace(" ", "")}`}
@@ -248,7 +248,7 @@ export default function Footer() {
           {/* Contact Info - Redesigned */}
           <div className="lg:col-span-4 space-y-6">
             <h3 className="text-xl font-semibold text-yellow-300 relative">
-              Get In Touch
+              Get in Touch
               <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-yellow-400 to-transparent"></div>
             </h3>
             <div className="space-y-4">
