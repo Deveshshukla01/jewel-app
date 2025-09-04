@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 
 export default function Carousel() {
   const images = [
-    "Carousel/2.jpg", // replace/add more images here
+    "Carousel/2.jpg",
   ]
 
   const [current, setCurrent] = useState(0)
