@@ -8,10 +8,10 @@ import Reviews from '../components/Reviews'
 import Footer from '../components/Footer'
 import TrustBadges from '../components/Featured'
 import CareGuides from '../components/PDF'
-import Carousel from '../components/Carousel-Mid'
 import About from '../components/AboutUs'
 import FloatingWhatsApp from '../components/Whatsapp'
 import InstagramPosts from '../components/Instagram'
+import VideoLink from '../components/Carousel-Mid'
 
 
 export default function Home(){
@@ -24,7 +24,7 @@ export default function Home(){
       <About/>
       <TrustBadges/>
       <Categories />
-      <Carousel/>
+      <VideoLink/>
       <FeaturedProducts />
       <CareGuides/>
       <InstagramPosts/>

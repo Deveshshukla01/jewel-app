@@ -1,62 +1,53 @@
-import React, { useState, useEffect } from "react"
+// import React from "react"
 
-export default function Carousel() {
-  const images = [
-    "Carousel/2.jpg",
-  ]
+// export default function VideoLink() {
+//   return (
+//     <div className="relative w-full h-[500px] overflow-hidden">
+//       <a href="/newpage"> 
+//         <video
+//           src="videos/mid.mp4" // put your video inside public/videos/
+//           autoPlay
+//           loop
+//           muted
+//           playsInline
+//           className="w-full h-full object-cover cursor-pointer"
+//         />
+//       </a>
+//     </div>
+//   )
+// }
+import React, { useState } from "react"
 
-  const [current, setCurrent] = useState(0)
-
-  useEffect(() => {
-    if (images.length > 1) {
-      const interval = setInterval(() => {
-        setCurrent((prev) => (prev + 1) % images.length)
-      }, 4000) // 4s auto slide
-      return () => clearInterval(interval)
-    }
-  }, [images.length])
+export default function VideoWithPopup() {
+  const [open, setOpen] = useState(false)
 
   return (
-    <div className="relative w-full h-[500px] overflow-hidden">
-      {/* Image */}
-      <img
-        src={images[current]}
-        alt="carousel"
-        className="w-full h-full object-cover transition-all duration-700"
+    <div className="relative w-full h-[600px] overflow-hidden">
+      {/* Video */}
+      <video
+        src="videos/mid.mp4" // put video in public/videos/
+        autoPlay
+        loop
+        muted
+        playsInline
+        onClick={() => setOpen(true)} // open popup on click
+        className="w-full h-full object-cover cursor-pointer"
       />
 
-      {/* Navigation (only if more than one image) */}
-      {images.length > 1 && (
-        <>
-          <button
-            onClick={() =>
-              setCurrent((prev) => (prev - 1 + images.length) % images.length)
-            }
-            className="absolute top-1/2 left-6 -translate-y-1/2 bg-black/40 text-white px-3 py-2 rounded-full hover:bg-black/60"
-          >
-            ❮
-          </button>
-          <button
-            onClick={() => setCurrent((prev) => (prev + 1) % images.length)}
-            className="absolute top-1/2 right-6 -translate-y-1/2 bg-black/40 text-white px-3 py-2 rounded-full hover:bg-black/60"
-          >
-            ❯
-          </button>
-        </>
-      )}
-
-      {/* Dots (only if more than one image) */}
-      {images.length > 1 && (
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2">
-          {images.map((_, i) => (
-            <div
-              key={i}
-              className={`w-3 h-3 rounded-full transition-all cursor-pointer ${
-                i === current ? "bg-[#542018]" : "bg-white/70"
-              }`}
-              onClick={() => setCurrent(i)}
-            />
-          ))}
+      {/* Popup Modal */}
+      {open && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
+          <div className="bg-white p-8 rounded-2xl shadow-lg text-center">
+            <h1 className="text-blue-600 text-4xl font-serif font-bold">
+              Something big is coming soon
+            </h1>
+            <button
+              onClick={() => setOpen(false)}
+              className="mt-6 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            >
+              Close
+            </button>
+          </div>
         </div>
       )}
     </div>
