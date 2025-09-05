@@ -45,7 +45,7 @@ export default function VideoWithPopup() {
               exit={{ scale: 0.8, opacity: 0 }}
               className="bg-white text-blue-600 font-bold font-serif text-lg sm:text-3xl md:text-5xl p-4 sm:p-8 rounded-2xl shadow-xl text-center max-w-[90%]"
             >
-              🚀 Something new is coming soon!
+             Something new is coming soon!
               <button
                 onClick={() => setOpen(false)}
                 className="block mx-auto mt-6 bg-blue-600 font-serif text-white px-4 py-2 rounded-lg hover:bg-blue-700"
