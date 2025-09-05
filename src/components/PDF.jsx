@@ -20,7 +20,7 @@ const guides = [
     id: 3,
     title: "Jewelry Care Tips",
     desc: "Essential tips to preserve the shine and elegance of your jewelry.",
-    pdf: "/pdfs/jewelry-care-tips.pdf",
+    pdf: "/Pdf/jct.pdf",
     icon: <Gem className="h-8 w-8 sm:h-10 sm:w-10 text-[#8B4513]" />,
   },
 ];
