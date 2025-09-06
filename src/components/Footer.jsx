@@ -51,7 +51,7 @@ export default function Footer() {
             </div>
             
             <h3 className="text-xl font-semibold text-yellow-300 relative">
-              Get in Touch
+            Our Social Network:
               <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-yellow-400 to-transparent"></div>
             </h3>
 
