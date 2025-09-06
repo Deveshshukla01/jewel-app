@@ -10,7 +10,7 @@ export default function About({
 }) {
   const slides = images.length
     ? images
-    : ["Carousel/1m.jpeg", "Carousel/4m.jpeg","Carousel/2m.jpeg", "Carousel/3m.jpeg"];
+    : ["Carousel/1m.jpeg", "Carousel/4m.jpeg","Carousel/2m.jpeg", "Carousel/3m.jpeg","Carousel/5m.jpeg"];
 
   const [isOpen, setIsOpen] = useState(false);
 
