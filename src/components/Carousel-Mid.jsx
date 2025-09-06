@@ -7,10 +7,9 @@ export default function VideoWithPopup() {
   return (
     <div
       className="
-      bg-[#f3f0eb]
         relative w-full 
-        h-[60vh]         /* smaller height on mobile */
-        sm:h-screen     /* full screen from tablet up */
+        h-[35vh]         /* smaller height on mobile */
+        sm:h-[600px]     /* full screen from tablet up */
         overflow-hidden flex items-center justify-center
       "
     >
