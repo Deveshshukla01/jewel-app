@@ -195,9 +195,10 @@ export default function Footer() {
               </div>
             </div>
             
-            <p className="text-amber-200/90 leading-relaxed text-lg font-bold max-w-md">
-               Our social handles-
-            </p>
+            <h3 className="text-xl font-semibold text-yellow-300 relative">
+              Get in Touch
+              <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-yellow-400 to-transparent"></div>
+            </h3>
 
             {/* Social Media - Redesigned */}
             <div className="flex space-x-4">
