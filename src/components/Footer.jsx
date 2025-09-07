@@ -17,7 +17,7 @@ export default function Footer() {
     : "bg-gray-100 text-[#542018] hover:bg-gray-200";
 
   return (
-    <footer className="bg-gradient-to-b from-[#542018] to-[#3d1611] text-amber-100 mt-auto relative overflow-hidden font-serif">
+    <footer  id="footer" className=" bg-gradient-to-b from-[#542018] to-[#3d1611] text-amber-100 mt-auto relative overflow-hidden font-serif">
       {/* Decorative background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-42 h-42 rounded-full bg-yellow-300"></div>
