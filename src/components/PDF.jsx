@@ -6,14 +6,14 @@ const guides = [
     id: 1,
     title: "Payment Guide",
     desc: "Understand the payment methods and secure checkout process.",
-    pdf: "/pdfs/payment-guide.pdf",
+    pdf: "/pdfs/payment.pdf",
     icon: <CreditCard className="h-8 w-8 sm:h-10 sm:w-10 text-[#8B4513]" />,
   },
   {
     id: 2,
     title: "Ring Size Calculator",
     desc: "Find your perfect ring size with our simple measurement guide.",
-    pdf: "/pdfs/ring-size-calculator.pdf",
+    pdf: "/pdfs/ring.pdf",
     icon: <Ruler className="h-8 w-8 sm:h-10 sm:w-10 text-[#8B4513]" />,
   },
   {
