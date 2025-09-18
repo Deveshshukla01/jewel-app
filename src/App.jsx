@@ -12,13 +12,13 @@ import ProductDetail from './pages/ProductDetail'
 // New pages for legal links
 import TermsPage from './pages/TermsPage'
 import PrivacyPage from './pages/PrivacyPage'
-import ReturnsPage from './pages/ReturnsPage'
+// Import new page
+import GuidesPage from './pages/GuidesPage'
 
 export default function App() {
   return (
     <AuthProvider>
       <div className="min-h-screen flex flex-col">
-        {/* ✅ This makes every route change scroll to top */}
         <ScrollToTop />
 
         <Routes>
@@ -27,10 +27,12 @@ export default function App() {
           <Route path="/category/:id" element={<CategoryPage />} />
           <Route path="/product/:id" element={<ProductDetail />} />
 
+          {/* Guides Page */}
+          <Route path="/guides" element={<GuidesPage />} />
+
           {/* Legal pages */}
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
-          {/* <Route path="/returns" element={<ReturnsPage />} /> */}
 
           {/* Admin (protected) */}
           <Route

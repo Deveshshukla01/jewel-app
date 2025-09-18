@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
-import { Menu, X, Home, Grid, Star, Phone, Store, Package, Image, ChevronDown } from 'lucide-react'
+import {
+  Menu, X, Home, Grid, Star, Phone, Store, Package, Image, ChevronDown
+} from 'lucide-react'
 
 // Categories with images
 const CATEGORIES = [
@@ -23,8 +25,10 @@ export default function Navbar() {
   const { user } = useAuth()
   const location = useLocation()
   const isAdmin = location.pathname.startsWith('/admin')
+  const isHomePage = location.pathname === '/' // ✅ Detect landing page
   const [menuOpen, setMenuOpen] = useState(false)
   const [showCategories, setShowCategories] = useState(false)
+  const [showPopup, setShowPopup] = useState(false) // ✅ Gurmeena popup
 
   return (
     <nav className="bg-white/95 backdrop-blur-sm top-0 z-50 relative">
@@ -32,25 +36,11 @@ export default function Navbar() {
         
         {/* Top Row */}
         <div className="w-full flex items-center justify-between">
-          {/* Admin/Dashboard Button */}
-          {/* <div className="w-16 md:w-20 flex justify-start md:justify-end">
-            <Link
-              to={isAdmin ? '/' : '/admin'}
-              className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full font-serif font-medium text-sm md:text-base transition-colors duration-200 ${
-                user
-                  ? 'bg-[#542018] text-white hover:bg-[#3d1611]'
-                  : 'bg-gray-100 text-[#542018] hover:bg-gray-200'
-              }`}
-            >
-              {isAdmin ? 'Home' : user ? 'Dashboard' : 'Admin'}
-            </Link>
-          </div> */}
-
           {/* Logo */}
           <Link to="/" className="flex justify-center flex-1">
             <img
               src="/Logo/LogoNav.png"
-              alt="sethi Logo"
+              alt="Sethi Logo"
               className="h-16 md:h-24 ml-15 w-auto hover:scale-105 transition-transform duration-300"
             />
           </Link>
@@ -70,17 +60,18 @@ export default function Navbar() {
         <div className="hidden md:flex flex-wrap justify-center font-serif gap-10 mt-6 relative">
           {!isAdmin ? (
             <>
-              <Link to="/" className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition-colors duration-200">
+              {/* Always show Home */}
+              <Link to="/" className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition">
                 <Home size={18}/> Home
               </Link>
 
-              {/* Categories Mega Menu */}
+              {/* Categories */}
               <div 
                 className="relative group"
                 onMouseEnter={() => setShowCategories(true)}
                 onMouseLeave={() => setShowCategories(false)}
               >
-                <button className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition-colors duration-200">
+                <button className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition">
                   <Grid size={18}/> Categories
                   <ChevronDown size={16} className={`transition-transform duration-200 ${showCategories ? 'rotate-180' : ''}`} />
                 </button>
@@ -96,9 +87,9 @@ export default function Navbar() {
                         <Link
                           key={cat.id}
                           to={`/category/${cat.id}`}
-                          className="flex flex-col items-center text-center p-3 rounded-lg hover:bg-gray-50 transition duration-300 group/item"
+                          className="flex flex-col items-center text-center p-3 rounded-lg hover:bg-gray-50 transition group/item"
                         >
-                          <div className="w-16 h-16 rounded-lg overflow-hidden shadow-sm mb-2 group-hover/item:shadow-md transition duration-300">
+                          <div className="w-16 h-16 rounded-lg overflow-hidden shadow-sm mb-2 group-hover/item:shadow-md transition">
                             <img 
                               src={cat.img} 
                               alt={cat.name} 
@@ -106,7 +97,7 @@ export default function Navbar() {
                               loading="lazy"
                             />
                           </div>
-                          <span className="text-xs font-medium text-[#542018] group-hover/item:text-amber-700 transition duration-300 leading-tight">
+                          <span className="text-xs font-medium text-[#542018] group-hover/item:text-amber-700 transition leading-tight">
                             {cat.name}
                           </span>
                         </Link>
@@ -116,29 +107,39 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <a href="#featured" className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition duration-300">
-                <Star size={18}/> Featured
-              </a>
-              <a href="#contact" className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition duration-300">
+              {/* Gurmeena Store (Popup trigger) */}
+              <button
+                onClick={() => setShowPopup(true)}
+                className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition"
+              >
                 <Store size={18}/> Silver Store - Gurmeena
-              </a>
-              <a href="#footer" className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition duration-300">
-                <Phone size={18}/> Contact Us
-              </a>
+              </button>
+
+              {/* Only show Featured + Contact on Home page */}
+              {isHomePage && (
+                <>
+                  <a href="#featured" className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition">
+                    <Star size={18}/> Featured
+                  </a>
+                  <a href="#footer" className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition">
+                    <Phone size={18}/> Contact Us
+                  </a>
+                </>
+              )}
             </>
           ) : (
             <>
-              <Link to="/admin/products" className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition duration-300">
+              <Link to="/admin/products" className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition">
                 <Package size={18}/> Products
               </Link>
-              <Link to="/admin/banner" className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition duration-300">
+              <Link to="/admin/banner" className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 transition">
                 <Image size={18}/> Banner
               </Link>
             </>
           )}
         </div>
 
-        {/* Mobile Nav - Animated */}
+        {/* Mobile Nav */}
         <div
           className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
             menuOpen ? 'max-h-[400px] opacity-100 scale-100 mt-4' : 'max-h-0 opacity-0 scale-95'
@@ -147,61 +148,37 @@ export default function Navbar() {
           <div className="flex flex-col items-center gap-4 bg-white rounded-lg py-6 w-full">
             {!isAdmin ? (
               <>
-                <Link
-                  to="/"
-                  onClick={() => setMenuOpen(false)}
-                  className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 hover:bg-gray-50 px-4 py-2 rounded-md transition-colors duration-300 w-full justify-center"
-                >
+                <Link to="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 hover:bg-gray-50 px-4 py-2 rounded-md w-full justify-center">
                   <Home size={18}/> Home
                 </Link>
-
-                <a
-                  href="#categories"
-                  onClick={() => setMenuOpen(false)}
-                  className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 hover:bg-gray-50 px-4 py-2 rounded-md transition-colors duration-300 w-full justify-center"
-                >
+                <Link to="#categories" onClick={() => setMenuOpen(false)} className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 hover:bg-gray-50 px-4 py-2 rounded-md w-full justify-center">
                   <Grid size={18}/> Categories
-                </a>
-
-                <a
-                  href="#featured"
-                  onClick={() => setMenuOpen(false)}
-                  className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 hover:bg-gray-50 px-4 py-2 rounded-md transition-colors duration-300 w-full justify-center"
-                >
-                  <Star size={18}/> Featured
-                </a>
-
-                <a
-                  href="#contact"
-                  onClick={() => setMenuOpen(false)}
-                  className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 hover:bg-gray-50 px-4 py-2 rounded-md transition-colors duration-300 w-full justify-center"
-                >
-                  <Phone size={18}/> Contact Us
-                </a>
-
-                <a
-                  href="#contact"
-                  onClick={() => setMenuOpen(false)}
-                  className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 hover:bg-gray-50 px-4 py-2 rounded-md transition-colors duration-300 w-full justify-center"
+                </Link>
+                <button
+                  onClick={() => { setShowPopup(true); setMenuOpen(false); }}
+                  className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 hover:bg-gray-50 px-4 py-2 rounded-md w-full justify-center"
                 >
                   <Store size={18}/> Silver Store - Gurmeena
-                </a>
+                </button>
+
+                {/* Show Featured + Contact only on Home */}
+                {isHomePage && (
+                  <>
+                    <a href="#featured" onClick={() => setMenuOpen(false)} className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 hover:bg-gray-50 px-4 py-2 rounded-md w-full justify-center">
+                      <Star size={18}/> Featured
+                    </a>
+                    <a href="#footer" onClick={() => setMenuOpen(false)} className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 hover:bg-gray-50 px-4 py-2 rounded-md w-full justify-center">
+                      <Phone size={18}/> Contact Us
+                    </a>
+                  </>
+                )}
               </>
             ) : (
               <>
-                <Link
-                  to="/admin/products"
-                  onClick={() => setMenuOpen(false)}
-                  className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 hover:bg-gray-50 px-4 py-2 rounded-md transition-colors duration-300 w-full justify-center"
-                >
+                <Link to="/admin/products" onClick={() => setMenuOpen(false)} className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 hover:bg-gray-50 px-4 py-2 rounded-md w-full justify-center">
                   <Package size={18}/> Products
                 </Link>
-
-                <Link
-                  to="/admin/banner"
-                  onClick={() => setMenuOpen(false)}
-                  className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 hover:bg-gray-50 px-4 py-2 rounded-md transition-colors duration-300 w-full justify-center"
-                >
+                <Link to="/admin/banner" onClick={() => setMenuOpen(false)} className="flex items-center gap-2 text-[#542018] font-medium hover:text-amber-700 hover:bg-gray-50 px-4 py-2 rounded-md w-full justify-center">
                   <Image size={18}/> Banner
                 </Link>
               </>
@@ -209,7 +186,23 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
+      {/* Gurmeena Popup */}
+      {showPopup && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50">
+          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-sm w-[90%] text-center animate-fadeIn">
+            <p className="text-blue-600 font-bold text-lg mb-6">
+              Something new is coming soon!
+            </p>
+            <button
+              onClick={() => setShowPopup(false)}
+              className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition font-medium"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </nav>
   )
 }
-
