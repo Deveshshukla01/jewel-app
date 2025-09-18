@@ -47,7 +47,7 @@ export default function VideoWithPopup() {
               Something new is coming soon!
               <button
                 onClick={() => setOpen(false)}
-                className="block mx-auto mt-6 bg-blue-600 font-serif text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+                className="block mx-auto mt-6 bg-blue-600 font-serif text-white px-4 py-2 rounded-lg hover:bg-blue-700 mb-10"
               >
                 Close
               </button>

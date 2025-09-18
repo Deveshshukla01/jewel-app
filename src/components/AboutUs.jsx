@@ -10,7 +10,7 @@ export default function About({
 }) {
   const slides = images.length
     ? images
-    : ["Carousel/1m.jpeg", "Carousel/4m.jpeg","Carousel/2m.jpeg", "Carousel/3m.jpeg","Carousel/5m.jpeg"];
+    : ["Carousel/1m.jpeg", "Carousel/4m.jpeg","Carousel/2m.jpg", "Carousel/3m.jpeg","Carousel/5m.jpeg"];
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -124,13 +124,20 @@ function Carousel({ images, interval = 2000 }) {
         style={{ transform: `translateX(-${index * 100}%)` }}
       >
         {images.map((src, i) => (
-          <div key={i} className="w-full shrink-0">
+          <div key={i} className="w-full  shrink-0">
             <img
               src={src}
               alt={`Slide ${i + 1}`}
-              className="w-full h-[300px] md:h-[400px] object-cover select-none"
+              className="w-full h-[300px] md:h-[575px] object-cover select-none"
               draggable={false}
             />
+            {/* <img
+  src={src}
+  alt={`Slide ${i + 1}`}
+  className="w-full h-[300px] md:h-[500px] object-contain bg-white select-none"
+  draggable={false}
+/> */}
+
           </div>
         ))}
       </div>
