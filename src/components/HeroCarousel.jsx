@@ -11,7 +11,7 @@ const JewelryHeroCarousel = () => {
     "Carousel/1.jpg",
     "Carousel/2.jpg",
     "Carousel/3.jpg",
-    "Carousel/4.jpg",
+   
   ];
 
   return (
