@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar"; // ✅ adjust path if needed
+import Footer from "../components/Footer";
 
 export default function GuidesPage() {
   const location = useLocation();
@@ -313,6 +314,7 @@ export default function GuidesPage() {
           )}
         </div>
       </div>
+      <Footer />
     </section>
   );
 }
