@@ -303,12 +303,12 @@ export default function GuidesPage() {
                 so that it maintains charm for long, following these simple steps.
               </p>
 
-              {/* Optional Image */}
+              {/* Optional Image
               <img
                 src="/images/jewellery-care.jpg"
                 alt="Jewellery Care Tips"
                 className="mt-6 rounded-lg shadow-md mx-auto max-w-full h-auto"
-              />
+              /> */}
             </div>
           )}
         </div>
