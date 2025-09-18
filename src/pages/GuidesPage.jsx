@@ -550,6 +550,11 @@ export default function GuidesPage() {
                 mild soap and lukewarm water to gently clean your pieces. Avoid harsh cleaners or abrasive
                 cloths, as these can scratch delicate metals and stones. Pat dry with a microfiber cloth.
               </p>
+              <img
+                src="/Pdfs/1.png"
+                alt="Jewellery Care Tips"
+                className="mt-6 rounded-lg shadow-md mx-auto max-w-full h-auto"
+              />
 
               {/* Tip 2 */}
               <h3 className="font-semibold mt-4">2. Store jewellery safely</h3>
@@ -559,6 +564,11 @@ export default function GuidesPage() {
                 should be stored away from direct air exposure. Avoid tossing jewellery into drawers where
                 it can easily get tangled or damaged.
               </p>
+              <img
+                src="/Pdfs/2.png"
+                alt="Jewellery Care Tips"
+                className="mt-6 rounded-lg shadow-md mx-auto max-w-full h-auto"
+              />
 
               {/* Tip 3 */}
               <h3 className="font-semibold mt-4">3. Protect from chemicals</h3>
@@ -568,6 +578,11 @@ export default function GuidesPage() {
                 before swimming, cleaning, or exercising to prevent exposure to harsh chemicals like
                 chlorine and sweat.
               </p>
+              <img
+                src="/Pdfs/3.png"
+                alt="Jewellery Care Tips"
+                className="mt-6 rounded-lg shadow-md mx-auto max-w-full h-auto"
+              />
 
               {/* Tip 4 */}
               <h3 className="font-semibold mt-4">4. Keep away from light & heat</h3>
@@ -576,6 +591,11 @@ export default function GuidesPage() {
                 lose their natural color. Opals, pearls, and amber are especially sensitive to light and
                 heat. Store them in shaded, temperature-controlled spaces to preserve their beauty.
               </p>
+              <img
+                src="/Pdfs/4.png"
+                alt="Jewellery Care Tips"
+                className="mt-6 rounded-lg shadow-md mx-auto max-w-full h-auto"
+              />
 
               {/* Tip 5 */}
               <h3 className="font-semibold mt-4">5. Regular Professional Check-ups</h3>
@@ -593,11 +613,11 @@ export default function GuidesPage() {
               </p>
 
               {/* Optional Image */}
-              {/* <img
+              <img
                 src="/images/jewellery-care.jpg"
                 alt="Jewellery Care Tips"
                 className="mt-6 rounded-lg shadow-md mx-auto max-w-full h-auto"
-              /> */}
+              />
             </div>
           )}
         </div>
