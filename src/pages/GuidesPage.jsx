@@ -73,9 +73,9 @@ export default function GuidesPage() {
 
     {/* UPI Image */}
     <img
-      src="/images/upi.jpg"
+      src="/Pdfs/qr.jpg"
       alt="UPI Payment"
-      className="mt-3 rounded-lg shadow-md mx-auto max-w-full h-auto"
+      className="mt-3 rounded-lg shadow-md mx-auto max-w-100 h-auto"
     />
 
     {/* SBI Bank under UPI */}
@@ -294,11 +294,11 @@ export default function GuidesPage() {
     </p>
 
     {/* Image */}
-    <img
+    {/* <img
       src="/images/jewellery-care.jpg"
       alt="Jewellery Care Tips"
       className="mt-6 rounded-lg shadow-md mx-auto max-w-full h-auto"
-    />
+    /> */}
   </div>
 )}
 
