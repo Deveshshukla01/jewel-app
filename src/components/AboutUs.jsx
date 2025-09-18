@@ -6,7 +6,7 @@ export default function About({
   images = [],
   title = "About Us",
   desc =
-    "Sethi Jewellers was established in 1984 by Shri Gurcharan Sethi with a humble beginning in a small booth shop in Sector 16, Chandigarh. Our brand was born in an era when the hallmark standards were not much prevalent, and the entire jewellery industry was based on a system of trust. Hence, providing quality jewellery with dedicated personalised service became our motto. ",
+    "Sethi Jewellers was established in 1984 by Shri Gurcharan Sethi with a humble beginning in a small booth shop in Sector 16, Chandigarh. Our brand was born in an era when the hallmark standards were not much prevalent, and the entire jewellery industry was based on a system of trust. Hence, providing quality jewellery with dedicated personalised service became our motto. Gradually, with almighty’s grace, the hard work of our team, and the love from our clients who appreciate our quality products and dedicated service... ",
 }) {
   const slides = images.length
     ? images
@@ -111,6 +111,7 @@ function Carousel({ images, interval = 2000 }) {
 
   return (
     <div
+      id="aboutus"
       className="relative w-full overflow-hidden rounded-xl"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}

@@ -182,7 +182,7 @@ export default function CategoryPage() {
                       <a
                         key={p.$id}
                         href={`https://wa.me/917973616115?text=${encodeURIComponent(
-                        `Hi, I'm interested in the product:} from category: ${CATEGORY_NAMES[id]?.name || id}`
+                        `Hi, I'm interested in the product: from category: ${CATEGORY_NAMES[id]?.name || id}`
                       )}`}                       
                         target="_blank"
                         rel="noopener noreferrer"

@@ -270,27 +270,39 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="lg:col-span-3 space-y-6">
-            <h3 className="text-xl font-semibold text-yellow-300 relative">
-              Quick Links
-              <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-yellow-400 to-transparent"></div>
-            </h3>
-            <nav className="space-y-3">
-              {["About Us", "Categories", "Featured Product"].map((link, i) => (
-                <a
-                  key={i}
-                  href={`#${link.toLowerCase().replace(" ", "")}`}
-                  className="block text-amber-200/80 hover:text-yellow-400 transition-all duration-300 text-base font-light group"
-                >
-                  <span className="relative">
-                    {link}
-                    <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
-                  </span>
-                </a>
-              ))}
-            </nav>
-          </div>
+        {/* Quick Links */}
+<div className="lg:col-span-3 space-y-6">
+  <h3 className="text-xl font-semibold text-yellow-300 relative">
+    Quick Links
+    <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-yellow-400 to-transparent"></div>
+  </h3>
+  <nav className="space-y-3">
+    {[
+      { name: "About Us", id: "aboutus" },
+      { name: "Categories", id: "categories" },
+      { name: "Featured Product", id: "featured" },
+    ].map((link, i) => (
+      <a
+        key={i}
+        href={`#${link.id}`}
+        className="block text-amber-200/80 hover:text-yellow-400 transition-all duration-300 text-base font-light group"
+        onClick={(e) => {
+          e.preventDefault();
+          const target = document.getElementById(link.id);
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+        }}
+      >
+        <span className="relative">
+          {link.name}
+          <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+        </span>
+      </a>
+    ))}
+  </nav>
+</div>
+
 
           {/* Contact Info */}
           <div className="lg:col-span-4 space-y-6">

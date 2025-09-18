@@ -6,7 +6,10 @@ export default function VideoWithPopup() {
 
   return (
     <div
+    id="gurmeena"
       className="
+      mt-5
+      mb-5
         relative w-full 
         h-[40vh]        /* smaller height on mobile */
         sm:h-screen     /* full screen on tablet & desktop */
