@@ -86,7 +86,7 @@ export default function GuidesPage() {
               <img
                 src="/Pdfs/qr.jpg"
                 alt="UPI Payment"
-                className="mt-3 rounded-lg shadow-md mx-auto max-w-100 h-auto"
+                className="mt-3 rounded-lg shadow-md mx-auto w-full max-w-[280px] sm:max-w-[350px] h-auto"
               />
               <div className="mt-4 p-4 bg-[#f9f4e7] rounded-lg shadow-sm">
                 <p><b>Bank:</b> State Bank of India</p>
@@ -94,6 +94,7 @@ export default function GuidesPage() {
                 <p><b>Current A/C:</b> 37930674195</p>
                 <p><b>IFSC Code:</b> SBIN0050736</p>
               </div>
+
               <p className="mt-3">
                 Please enter whole UPI ID – <b>8968778180@okbizaxis</b>
               </p>
