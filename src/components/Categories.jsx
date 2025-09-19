@@ -14,7 +14,7 @@ const categories = [
   { id: 'pendant-sets', name: 'Pendant Sets', img: '/Categories/pendant_sets.png' },
   { id: 'pendants', name: 'Pendants', img: '/Categories/pendant.png' },
   { id: 'diamonds', name: 'Diamonds', img: '/Categories/3.png' },
-  { id: 'gems', name: 'Gem Stone', img: '/Categories/Gems.png' }
+  { id: 'gems', name: 'Gemstone', img: '/Categories/Gems.png' }
 ];
 
 export default function Categories() {

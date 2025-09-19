@@ -17,13 +17,13 @@ export default function About({
   const fullContent = `
 Sethi Jewellers was established in 1984 by Shri Gurcharan Sethi with a humble beginning in a small booth shop in Sector 16, Chandigarh. Our brand was born in an era when the hallmark standards were not much prevalent, and the entire jewellery industry was based on a system of trust. Hence, providing quality jewellery with dedicated personalised service became our motto.
 
-Gradually, with almighty’s grace, the hard work of our team, and the love from our clients who appreciate our quality products and dedicated service, we shifted to a new showroom, and are today running our multi-story flagship store in Sector 16, Chandigarh, located right in the heart of the city. We offer Gold, Diamond (both Natural and Lab Grown), Gemstones and also offer Silver Jewellery, via our sub-brand – Gurmeena (website link), which delivers products to clients across the globe.
+Gradually, with almighty’s grace, the hardwork of our team, and the love from our clients who appreciate our quality products and dedicated service, we shifted to a new showroom, and are today running our multi-story flagship store in Sector 16, Chandigarh, located right in the heart of the city. We offer Gold, Diamond (both Natural and Lab Grown), Gemstones and also offer Silver Jewellery, via our sub-brand – Gurmeena (website link), which delivers products to clients across the globe.
 
 With inhouse diamond assortment, jewellery melting-testing and jewellery service facilities we offer end to end solutions to our clients, right from purchase to buyback.
 
 With over 40+ year of experience in the jewellery industry, we have evolved as a trusted brand in India, serving clients across the globe, via our innovative and agile omni-channel model.
 
-We hereby welcome you all to visit our store in Chandigarh, or schedule a video call with us, and we will be happy to assist you have the right jewellery piece for you, because we understand it is your hard earned money and we are committed to offer you nothing less than the best.
+We hereby welcome you all to visit our store in Chandigarh, or schedule a video call with us, and we will be happy to assist you in finding the right jewellery piece for you, because we understand it is your hard-earned money and we are committed to offering you nothing less than the best.
   `;
 
   return (
