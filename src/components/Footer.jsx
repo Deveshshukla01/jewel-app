@@ -156,7 +156,7 @@ export default function Footer() {
                 },
                 {
                   icon: MdLocationOn,
-                  href: "https://www.google.com/maps/search/?api=1&query=SCO+15+Sector+16D+Chandigarh+160015",
+                  href: "https://www.google.com/maps/place/Sethi+Jewellers/@30.7471477,76.775586,17z/data=!3m1!4b1!4m6!3m5!1s0x390fed9e99a86749:0xb5a38a7333d95b29!8m2!3d30.7471477!4d76.775586!16s%2Fg%2F1tn045bb?entry=ttu&g_ep=EgoyMDI1MDkxNy4wIKXMDSoASAFQAw%3D%3D",
                   text: "SCO 15, Sector 16D, Chandigarh, 160015",
                 },
               ].map((contact, i) => (
