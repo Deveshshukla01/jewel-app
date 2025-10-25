@@ -8,8 +8,9 @@ import "swiper/css/effect-fade";
 
 const JewelryHeroCarousel = () => {
   const slides = [
-    "Carousel/1.jpg",
     "Carousel/2.jpg",
+    "Carousel/1.jpg",
+    
     "Carousel/3.jpg",
    
   ];
